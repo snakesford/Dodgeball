@@ -13,7 +13,7 @@
   <body>
     <header class="site-header">
       <div class="brand-block">
-        <p class="eyebrow">Dodgeball Trading Cards</p>
+        <p class="eyebrow">Portland Dodgeball Player Cards</p>
       </div>
       <nav class="site-nav" aria-label="Primary">
         <a href="#featured-card">Featured Card</a>
@@ -24,206 +24,167 @@
     <main class="page-shell">
       <section class="search-panel" aria-label="Search players">
         <form class="search-form" role="search">
-          <label class="search-label" for="player-search">Search cards</label>
-          <input
-            id="player-search"
-            class="search-input"
-            type="search"
-            name="player-search"
-            placeholder="Search by player name or role"
-          />
+          <div class="search-row">
+            <div class="search-field">
+              <label class="search-label" for="player-search">Search cards</label>
+              <input
+                id="player-search"
+                class="search-input"
+                type="search"
+                name="player-search"
+                placeholder="Search by name, age, role, catches, speed, or win rate"
+              />
+            </div>
+
+            <div class="sort-field">
+              <label class="search-label" for="sort-cards">Sort by</label>
+              <select id="sort-cards" class="sort-select" name="sort-cards">
+                <option value="default">Featured order</option>
+                <option value="name-asc">Name A-Z</option>
+                <option value="age-asc">Age: Youngest</option>
+                <option value="age-desc">Age: Oldest</option>
+                <option value="overall-desc">Overall: High to Low</option>
+                <option value="catches-desc">Catches: High to Low</option>
+              </select>
+            </div>
+          </div>
         </form>
       </section>
 
       <section class="card-grid" id="featured-card" aria-label="Player cards">
-        <article class="player-card">
-          <div class="card-topline">
-            <span class="tag">Featured</span>
-            <span class="rating">OVR 91</span>
-          </div>
-
-          <div class="profile-wrap">
-            <img
-              src="./stephen-profile.svg"
-              alt="Illustrated profile portrait of Stephen"
-              class="profile-image"
-              width="220"
-              height="220"
-            />
-          </div>
-
-          <div class="card-copy">
-            <div>
-              <p class="player-role">Two-Way Captain</p>
-              <h2>Stephen</h2>
-            </div>
-            <p class="player-note">
-              Calm in transition, accurate under pressure, and quick to reset a
-              point.
-            </p>
-          </div>
-
-          <dl class="stat-list" id="stats">
-            <div>
-              <dt>Catches</dt>
-              <dd>18</dd>
-            </div>
-            <div>
-              <dt>Throw Speed</dt>
-              <dd>74 mph</dd>
-            </div>
-            <div>
-              <dt>Win Rate</dt>
-              <dd>82%</dd>
-            </div>
-            <div>
-              <dt>Stamina</dt>
-              <dd>94</dd>
-            </div>
-          </dl>
-        </article>
-
-        <article class="player-card">
-          <div class="card-topline">
-            <span class="tag">Featured</span>
-            <span class="rating">OVR 91</span>
-          </div>
-
-          <div class="profile-wrap">
-            <img
-              src="./stephen-profile.svg"
-              alt="Illustrated profile portrait of Stephen"
-              class="profile-image"
-              width="220"
-              height="220"
-            />
-          </div>
-
-          <div class="card-copy">
-            <div>
-              <p class="player-role">Two-Way Captain</p>
-              <h2>Stephen</h2>
-            </div>
-            <p class="player-note">
-              Calm in transition, accurate under pressure, and quick to reset a
-              point.
-            </p>
-          </div>
-
-          <dl class="stat-list">
-            <div>
-              <dt>Catches</dt>
-              <dd>18</dd>
-            </div>
-            <div>
-              <dt>Throw Speed</dt>
-              <dd>74 mph</dd>
-            </div>
-            <div>
-              <dt>Win Rate</dt>
-              <dd>82%</dd>
-            </div>
-            <div>
-              <dt>Stamina</dt>
-              <dd>94</dd>
-            </div>
-          </dl>
-        </article>
-
-        <article class="player-card">
-          <div class="card-topline">
-            <span class="tag">Featured</span>
-            <span class="rating">OVR 91</span>
-          </div>
-
-          <div class="profile-wrap">
-            <img
-              src="./stephen-profile.svg"
-              alt="Illustrated profile portrait of Stephen"
-              class="profile-image"
-              width="220"
-              height="220"
-            />
-          </div>
-
-          <div class="card-copy">
-            <div>
-              <p class="player-role">Two-Way Captain</p>
-              <h2>Stephen</h2>
-            </div>
-            <p class="player-note">
-              Calm in transition, accurate under pressure, and quick to reset a
-              point.
-            </p>
-          </div>
-
-          <dl class="stat-list">
-            <div>
-              <dt>Catches</dt>
-              <dd>18</dd>
-            </div>
-            <div>
-              <dt>Throw Speed</dt>
-              <dd>74 mph</dd>
-            </div>
-            <div>
-              <dt>Win Rate</dt>
-              <dd>82%</dd>
-            </div>
-            <div>
-              <dt>Stamina</dt>
-              <dd>94</dd>
-            </div>
-          </dl>
-        </article>
-
-        <article class="player-card">
-          <div class="card-topline">
-            <span class="tag">Featured</span>
-            <span class="rating">OVR 91</span>
-          </div>
-
-          <div class="profile-wrap">
-            <img
-              src="./stephen-profile.svg"
-              alt="Illustrated profile portrait of Stephen"
-              class="profile-image"
-              width="220"
-              height="220"
-            />
-          </div>
-
-          <div class="card-copy">
-            <div>
-              <p class="player-role">Two-Way Captain</p>
-              <h2>Stephen</h2>
-            </div>
-            <p class="player-note">
-              Calm in transition, accurate under pressure, and quick to reset a
-              point.
-            </p>
-          </div>
-
-          <dl class="stat-list">
-            <div>
-              <dt>Catches</dt>
-              <dd>18</dd>
-            </div>
-            <div>
-              <dt>Throw Speed</dt>
-              <dd>74 mph</dd>
-            </div>
-            <div>
-              <dt>Win Rate</dt>
-              <dd>82%</dd>
-            </div>
-            <div>
-              <dt>Stamina</dt>
-              <dd>94</dd>
-            </div>
-          </dl>
-        </article>
+        <div class="loading-state" id="loading-state">Loading player cards...</div>
       </section>
     </main>
+
+    <div class="detail-modal" id="detail-modal" hidden>
+      <div class="detail-backdrop" data-close-detail="true"></div>
+      <section
+        class="detail-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="detail-name"
+      >
+        <button class="detail-close" type="button" aria-label="Close player details">
+          Close
+        </button>
+
+        <div class="detail-layout">
+          <div class="detail-visual">
+            <div class="detail-badge-row">
+              <span class="tag">Detailed View</span>
+              <span class="rating" id="detail-overall">Top 7% • Score 92</span>
+            </div>
+            <div class="detail-image-wrap rarity-legendary" id="detail-image-wrap">
+              <img
+                src="./stephen-profile.svg"
+                alt="Illustrated profile portrait"
+                class="detail-image"
+                width="220"
+                height="220"
+              />
+            </div>
+            <div class="detail-skill-bars">
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Power</span>
+                  <span id="skill-power-value">8/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-power-bar"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Agility</span>
+                  <span id="skill-agility-value">9/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-agility-bar"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Dodging</span>
+                  <span id="skill-dodging-value">8/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-dodging-bar"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Catching</span>
+                  <span id="skill-catching-value">9/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-catching-bar"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Awareness</span>
+                  <span id="skill-awareness-value">9/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-awareness-bar"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Accuracy</span>
+                  <span id="skill-accuracy-value">9/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-accuracy-bar"></span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-copy">
+            <div>
+              <p class="player-role" id="detail-role">Two-Way Captain</p>
+              <h2 id="detail-name">Stephen</h2>
+              <p class="player-meta" id="detail-meta">Age 24 • West Squad</p>
+            </div>
+
+            <p class="detail-style" id="detail-style">
+              Balanced control, strong resets, and smart pressure.
+            </p>
+
+            <dl class="detail-stat-grid">
+              <div>
+                <dt>Catches</dt>
+                <dd id="detail-catches">18</dd>
+              </div>
+              <div>
+                <dt>Throw Speed</dt>
+                <dd id="detail-speed">74 mph</dd>
+              </div>
+              <div>
+                <dt>Win Rate</dt>
+                <dd id="detail-winrate">82%</dd>
+              </div>
+              <div>
+                <dt>Stamina</dt>
+                <dd id="detail-stamina">94</dd>
+              </div>
+              <div>
+                <dt>Accuracy</dt>
+                <dd id="detail-accuracy">89</dd>
+              </div>
+              <div>
+                <dt>Agility</dt>
+                <dd id="detail-agility">87</dd>
+              </div>
+              <div>
+                <dt>Discipline</dt>
+                <dd id="detail-discipline">92</dd>
+              </div>
+              <div>
+                <dt>Hands</dt>
+                <dd id="detail-hands">90</dd>
+              </div>
+            </dl>
+
+            <div class="detail-highlights">
+              <p class="search-label">Highlights</p>
+              <p id="detail-highlights">
+                Team captain, transition organizer, late-round stabilizer
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="./script.js"></script>
   </body>
 </html>

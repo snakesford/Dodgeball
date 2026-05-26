@@ -7,26 +7,26 @@ const loadingState = document.querySelector("#loading-state");
 const detailImageWrap = document.querySelector("#detail-image-wrap");
 
 const detailFields = {
-  overall: document.querySelector("#detail-overall"),
+  topPercent: document.querySelector("#detail-top-percent"),
+  score: document.querySelector("#detail-score"),
   role: document.querySelector("#detail-role"),
   name: document.querySelector("#detail-name"),
   meta: document.querySelector("#detail-meta"),
   style: document.querySelector("#detail-style"),
-  catches: document.querySelector("#detail-catches"),
   speed: document.querySelector("#detail-speed"),
-  winrate: document.querySelector("#detail-winrate"),
-  stamina: document.querySelector("#detail-stamina"),
-  accuracy: document.querySelector("#detail-accuracy"),
-  agility: document.querySelector("#detail-agility"),
-  discipline: document.querySelector("#detail-discipline"),
-  hands: document.querySelector("#detail-hands"),
   highlights: document.querySelector("#detail-highlights"),
+  countering: document.querySelector("#detail-countering"),
+  history: document.querySelector("#detail-history"),
 };
 
 const skillFields = {
   power: {
     value: document.querySelector("#skill-power-value"),
     bar: document.querySelector("#skill-power-bar"),
+  },
+  stamina: {
+    value: document.querySelector("#skill-stamina-value"),
+    bar: document.querySelector("#skill-stamina-bar"),
   },
   agility: {
     value: document.querySelector("#skill-agility-value"),
@@ -55,6 +55,17 @@ let visiblePlayers = [];
 let activeCard = null;
 
 const clampSkill = (value) => Math.max(1, Math.min(10, Number(value) || 1));
+const formatAgeRange = (age) => {
+  const numericAge = Number(age);
+
+  if (!Number.isFinite(numericAge)) {
+    return "";
+  }
+
+  const decade = Math.floor(numericAge / 10) * 10;
+  return `${decade}'s`;
+};
+
 const rarityClasses = [
   "rarity-common",
   "rarity-uncommon",
@@ -116,10 +127,15 @@ const setSkill = (key, value) => {
 
   field.value.textContent = `${numericValue}/10`;
   field.bar.style.width = `${numericValue * 10}%`;
-  field.bar.classList.remove("is-low", "is-mid", "is-high", "is-elite");
+  field.bar.classList.remove("is-low", "is-ok", "is-mid", "is-high", "is-elite", "is-max");
 
-  if (numericValue <= 3) {
+  if (numericValue <= 2) {
     field.bar.classList.add("is-low");
+    return;
+  }
+
+  if (numericValue <= 4) {
+    field.bar.classList.add("is-ok");
     return;
   }
 
@@ -128,12 +144,22 @@ const setSkill = (key, value) => {
     return;
   }
 
-  if (numericValue <= 9) {
+  if (numericValue <= 8) {
     field.bar.classList.add("is-high");
     return;
   }
 
-  field.bar.classList.add("is-elite");
+  if (numericValue === 9) {
+    field.bar.classList.add("is-elite");
+    return;
+  }
+
+  field.bar.classList.add("is-max");
+};
+
+const readNumber = (value, fallback = 0) => {
+  const numericValue = Number(value);
+  return Number.isFinite(numericValue) ? numericValue : fallback;
 };
 
 const countMatches = (text, terms) =>
@@ -145,18 +171,16 @@ const computeOverallScore = (player) => {
     skillValues.reduce((sum, value) => sum + clampSkill(value), 0) / skillValues.length;
 
   const statScore =
-    player.catches * 1.1 +
-    player.speed * 0.32 +
-    player.winrate * 0.45 +
-    player.stamina * 0.28 +
-    player.accuracy * 0.25 +
-    player.agility * 0.22 +
-    player.discipline * 0.18 +
-    player.hands * 0.16 +
-    player.awareness * 2.2 +
-    player.power * 1.8 +
-    player.dodging * 1.7 +
-    player.catching * 1.9;
+    readNumber(player.catches) * 1.1 +
+    readNumber(player.speed, 30) * 0.32 +
+    readNumber(player.stamina) * 0.28 +
+    readNumber(player.agility) * 0.22 +
+    readNumber(player.hands) * 0.16 +
+    readNumber(player.power, player.skills.power) * 1.8 +
+    clampSkill(player.skills.dodging) * 1.7 +
+    clampSkill(player.skills.catching) * 1.9 +
+    clampSkill(player.skills.awareness) * 2.2 +
+    clampSkill(player.skills.accuracy) * 2.5;
 
   const text = `${player.note} ${player.style} ${player.highlights.join(" ")}`.toLowerCase();
   const textBonus = countMatches(text, positiveTerms) * 1.2 - countMatches(text, negativeTerms) * 1.8;
@@ -166,6 +190,10 @@ const computeOverallScore = (player) => {
     skillAverage * 4.4 +
     statScore / 4.8 +
     textBonus;
+
+  if (!Number.isFinite(total)) {
+    return readNumber(player.overall, 50);
+  }
 
   return Math.max(1, Math.min(99, Math.round(total)));
 };
@@ -190,6 +218,24 @@ const getRarityClass = (score) => {
   return "rarity-common";
 };
 
+const applyTopPercentRanks = (list) => {
+  const rankedIds = [...list]
+    .sort((a, b) => b.score - a.score)
+    .map((player) => player.id);
+
+  const totalPlayers = Math.max(rankedIds.length, 1);
+
+  return list.map((player) => {
+    const rankIndex = rankedIds.indexOf(player.id);
+    const topPercent = Math.max(1, Math.round(((rankIndex + 1) / totalPlayers) * 100));
+
+    return {
+      ...player,
+      topPercent,
+    };
+  });
+};
+
 const openDetail = (playerId) => {
   const player = players.find((entry) => entry.id === playerId);
 
@@ -198,23 +244,20 @@ const openDetail = (playerId) => {
   }
 
   activeCard = cardGrid?.querySelector(`[data-player-id="${playerId}"]`) || null;
-  detailFields.overall.textContent = `Top ${player.topPercent}% • Score ${player.score}`;
+  detailFields.topPercent.textContent = `Top ${player.topPercent}%`;
+  detailFields.score.textContent = `Score ${player.score}`;
   detailFields.role.textContent = player.role;
   detailFields.name.textContent = player.name;
-  detailFields.meta.textContent = `Age ${player.age} • ${player.team}`;
+  detailFields.meta.textContent = `Age ${formatAgeRange(player.age)} • ${player.team}`;
   detailFields.style.textContent = player.style;
-  detailFields.catches.textContent = String(player.catches);
   detailFields.speed.textContent = `${player.speed} mph`;
-  detailFields.winrate.textContent = `${player.winrate}%`;
-  detailFields.stamina.textContent = String(player.stamina);
-  detailFields.accuracy.textContent = String(player.accuracy);
-  detailFields.agility.textContent = String(player.agility);
-  detailFields.discipline.textContent = String(player.discipline);
-  detailFields.hands.textContent = String(player.hands);
   detailFields.highlights.textContent = player.highlights.join(", ");
+  detailFields.countering.textContent = player.countering || "";
+  detailFields.history.textContent = player.history || "";
   detailImageWrap?.classList.remove(...rarityClasses);
   detailImageWrap?.classList.add(player.rarityClass);
   setSkill("power", player.skills.power);
+  setSkill("stamina", player.skills.stamina);
   setSkill("agility", player.skills.agility);
   setSkill("dodging", player.skills.dodging);
   setSkill("catching", player.skills.catching);
@@ -239,6 +282,7 @@ const buildSearchText = (player) =>
   [
     player.name,
     player.age,
+    formatAgeRange(player.age),
     player.role,
     player.team,
     player.trait,
@@ -246,7 +290,6 @@ const buildSearchText = (player) =>
     player.style,
     player.catches,
     player.speed,
-    player.winrate,
     player.stamina,
     player.overall,
     ...player.highlights,
@@ -262,11 +305,11 @@ const createCardMarkup = (player) => `
     data-player-id="${escapeHtml(player.id)}"
     tabindex="0"
     role="button"
-    aria-label="Open detailed stats for ${escapeHtml(player.name)}, age ${escapeHtml(player.age)}"
+    aria-label="Open detailed stats for ${escapeHtml(player.name)}, age ${escapeHtml(formatAgeRange(player.age))}"
   >
     <div class="card-topline">
-      <span class="tag">Featured</span>
-      <span class="rating">Top ${escapeHtml(player.topPercent)}% • Score ${escapeHtml(player.score)}</span>
+      <span class="rating">Top ${escapeHtml(player.topPercent)}%</span>
+      <span class="rating">Score ${escapeHtml(player.score)}</span>
     </div>
 
     <div class="profile-wrap ${escapeHtml(player.rarityClass)}">
@@ -279,12 +322,13 @@ const createCardMarkup = (player) => `
       />
     </div>
 
+    <p class="player-meta">Age ${escapeHtml(formatAgeRange(player.age))} • ${escapeHtml(player.team)}</p>
+
     <div class="card-copy">
       <div>
         <p class="player-role">${escapeHtml(player.role)}</p>
         <h2>${escapeHtml(player.name)}</h2>
       </div>
-      <p class="player-meta">Age ${escapeHtml(player.age)} • ${escapeHtml(player.team)}</p>
       ${
         player.trait
           ? `<p class="player-trait" aria-label="Trait">${escapeHtml(player.trait)}</p>`
@@ -295,20 +339,8 @@ const createCardMarkup = (player) => `
 
     <dl class="stat-list">
       <div>
-        <dt>Catches</dt>
-        <dd>${escapeHtml(player.catches)}</dd>
-      </div>
-      <div>
         <dt>Throw Speed</dt>
         <dd>${escapeHtml(player.speed)} mph</dd>
-      </div>
-      <div>
-        <dt>Win Rate</dt>
-        <dd>${escapeHtml(player.winrate)}%</dd>
-      </div>
-      <div>
-        <dt>Stamina</dt>
-        <dd>${escapeHtml(player.stamina)}</dd>
       </div>
     </dl>
   </article>
@@ -401,16 +433,20 @@ const loadPlayers = async () => {
     }
 
     const data = await response.json();
-    players = data.players.map((player, index) => ({
-      ...player,
-      defaultIndex: index,
-      score: computeOverallScore(player),
-      rarityClass: "",
-      searchText: buildSearchText(player),
-    })).map((player) => ({
-      ...player,
-      rarityClass: getRarityClass(player.score),
-    }));
+    players = applyTopPercentRanks(
+      data.players
+        .map((player, index) => ({
+          ...player,
+          defaultIndex: index,
+          score: computeOverallScore(player),
+          rarityClass: "",
+          searchText: buildSearchText(player),
+        }))
+        .map((player) => ({
+          ...player,
+          rarityClass: getRarityClass(player.score),
+        })),
+    );
 
     loadingState?.remove();
     updateCards();

@@ -72,7 +72,10 @@
           <div class="detail-visual">
             <div class="detail-badge-row">
               <span class="tag">Detailed View</span>
-              <span class="rating" id="detail-overall">Top 7% • Score 92</span>
+              <div class="rating-group">
+                <span class="rating" id="detail-top-percent">Top 7%</span>
+                <span class="rating" id="detail-score">Score 92</span>
+              </div>
             </div>
             <div class="detail-image-wrap rarity-legendary" id="detail-image-wrap">
               <img
@@ -90,6 +93,13 @@
                   <span id="skill-power-value">8/10</span>
                 </div>
                 <div class="skill-track"><span class="skill-fill" id="skill-power-bar"></span></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Stamina</span>
+                  <span id="skill-stamina-value">9/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-stamina-bar"></span></div>
               </div>
               <div class="skill-row">
                 <div class="skill-head">
@@ -142,36 +152,8 @@
 
             <dl class="detail-stat-grid">
               <div>
-                <dt>Catches</dt>
-                <dd id="detail-catches">18</dd>
-              </div>
-              <div>
                 <dt>Throw Speed</dt>
                 <dd id="detail-speed">74 mph</dd>
-              </div>
-              <div>
-                <dt>Win Rate</dt>
-                <dd id="detail-winrate">82%</dd>
-              </div>
-              <div>
-                <dt>Stamina</dt>
-                <dd id="detail-stamina">94</dd>
-              </div>
-              <div>
-                <dt>Accuracy</dt>
-                <dd id="detail-accuracy">89</dd>
-              </div>
-              <div>
-                <dt>Agility</dt>
-                <dd id="detail-agility">87</dd>
-              </div>
-              <div>
-                <dt>Discipline</dt>
-                <dd id="detail-discipline">92</dd>
-              </div>
-              <div>
-                <dt>Hands</dt>
-                <dd id="detail-hands">90</dd>
               </div>
             </dl>
 
@@ -180,6 +162,16 @@
               <p id="detail-highlights">
                 Team captain, transition organizer, late-round stabilizer
               </p>
+            </div>
+
+            <div class="detail-countering">
+              <p class="search-label">Tips for Countering</p>
+              <p id="detail-countering"></p>
+            </div>
+
+            <div class="detail-history">
+              <p class="search-label">History</p>
+              <p id="detail-history"></p>
             </div>
           </div>
         </div>

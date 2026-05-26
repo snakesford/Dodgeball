@@ -5,6 +5,8 @@ const detailModal = document.querySelector("#detail-modal");
 const detailCloseButton = document.querySelector(".detail-close");
 const loadingState = document.querySelector("#loading-state");
 const detailImageWrap = document.querySelector("#detail-image-wrap");
+const detailExtraSkillRow = document.querySelector("#skill-extra-row");
+const detailExtraSkillLabel = document.querySelector("#skill-extra-label");
 
 const detailFields = {
   topPercent: document.querySelector("#detail-top-percent"),
@@ -12,8 +14,9 @@ const detailFields = {
   role: document.querySelector("#detail-role"),
   name: document.querySelector("#detail-name"),
   meta: document.querySelector("#detail-meta"),
-  style: document.querySelector("#detail-style"),
   speed: document.querySelector("#detail-speed"),
+  playsMostLike: document.querySelector("#detail-plays-most-like"),
+  note: document.querySelector("#detail-note"),
   highlights: document.querySelector("#detail-highlights"),
   countering: document.querySelector("#detail-countering"),
   history: document.querySelector("#detail-history"),
@@ -48,7 +51,21 @@ const skillFields = {
     value: document.querySelector("#skill-accuracy-value"),
     bar: document.querySelector("#skill-accuracy-bar"),
   },
+  extra: {
+    value: document.querySelector("#skill-extra-value"),
+    bar: document.querySelector("#skill-extra-bar"),
+  },
 };
+
+const coreSkillKeys = [
+  "power",
+  "stamina",
+  "agility",
+  "dodging",
+  "catching",
+  "awareness",
+  "accuracy",
+];
 
 let players = [];
 let visiblePlayers = [];
@@ -166,7 +183,7 @@ const countMatches = (text, terms) =>
   terms.reduce((count, term) => count + (text.includes(term) ? 1 : 0), 0);
 
 const computeOverallScore = (player) => {
-  const skillValues = Object.values(player.skills);
+  const skillValues = coreSkillKeys.map((key) => player.skills[key]);
   const skillAverage =
     skillValues.reduce((sum, value) => sum + clampSkill(value), 0) / skillValues.length;
 
@@ -182,7 +199,7 @@ const computeOverallScore = (player) => {
     clampSkill(player.skills.awareness) * 2.2 +
     clampSkill(player.skills.accuracy) * 2.5;
 
-  const text = `${player.note} ${player.style} ${player.highlights.join(" ")}`.toLowerCase();
+  const text = `${player.note} ${player.highlights.join(" ")}`.toLowerCase();
   const textBonus = countMatches(text, positiveTerms) * 1.2 - countMatches(text, negativeTerms) * 1.8;
 
   const total =
@@ -249,8 +266,9 @@ const openDetail = (playerId) => {
   detailFields.role.textContent = player.role;
   detailFields.name.textContent = player.name;
   detailFields.meta.textContent = `Age ${formatAgeRange(player.age)} • ${player.team}`;
-  detailFields.style.textContent = player.style;
   detailFields.speed.textContent = `${player.speed} mph`;
+  detailFields.playsMostLike.textContent = player.playsMostLike || "";
+  detailFields.note.textContent = player.note || "";
   detailFields.highlights.textContent = player.highlights.join(", ");
   detailFields.countering.textContent = player.countering || "";
   detailFields.history.textContent = player.history || "";
@@ -263,6 +281,13 @@ const openDetail = (playerId) => {
   setSkill("catching", player.skills.catching);
   setSkill("awareness", player.skills.awareness);
   setSkill("accuracy", player.skills.accuracy);
+  if (Number.isFinite(Number(player.skills.creativityWithSwears))) {
+    detailExtraSkillLabel.textContent = "Creativity with Swears";
+    setSkill("extra", player.skills.creativityWithSwears);
+    detailExtraSkillRow.hidden = false;
+  } else {
+    detailExtraSkillRow.hidden = true;
+  }
   detailModal.hidden = false;
   document.body.style.overflow = "hidden";
   detailCloseButton?.focus();
@@ -287,7 +312,6 @@ const buildSearchText = (player) =>
     player.team,
     player.trait,
     player.note,
-    player.style,
     player.catches,
     player.speed,
     player.stamina,

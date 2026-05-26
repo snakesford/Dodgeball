@@ -3,14 +3,14 @@
     {
       "id": "stephen-north-closer",
       "name": "Stephen",
-      "age": 29,
+      "age": 34,
       "team": "North Squad",
       "role": "Closing Specialist",
       "overall": 93,
       "topPercent": 7,
       "speed": 30,
+      "playsMostLike": "Venus flytrap",
       "note": "Efficient late in rounds with smart positioning and consistent finishing throws.",
-      "style": "Efficient closer with sharp positioning and low-error finishes.",
       "highlights": [
         "Endgame finisher",
         "Clutch accuracy",
@@ -18,9 +18,9 @@
       ],
       "skills": {
         "power": 9,
-        "stamina": 7,
-        "agility": 9,
-        "dodging": 8,
+        "stamina": 8,
+        "agility": 8,
+        "dodging": 9,
         "catching": 10,
         "awareness": 9,
         "accuracy": 9
@@ -36,7 +36,6 @@
       "topPercent": 8,
       "speed": 30,
       "note": "Heavy thrower with quick feet and strong late-game finishing pressure.",
-      "style": "Aggressive attacker who forces reactions and capitalizes on broken formations.",
       "highlights": [
         "Fast release",
         "Closing throw power",
@@ -44,12 +43,13 @@
       ],
       "skills": {
         "power": 9,
-        "stamina": 4,
-        "agility": 9,
+        "stamina": 5,
+        "agility": 7,
         "dodging": 8,
-        "catching": 8,
+        "catching": 9,
         "awareness": 8,
-        "accuracy": 9
+        "accuracy": 9,
+        "creativityWithSwears": 2
       }
     },
     {
@@ -62,7 +62,6 @@
       "topPercent": 13,
       "speed": 54,
       "note": "Mid-level thrower with a 54 mph max, but an excellent catcher who changes rallies with secure hands.",
-      "style": "Balanced two-way player who leans on timing, catches, and steady pressure more than raw throw speed.",
       "highlights": [
         "Top 6 presence",
         "Great catcher",
@@ -89,7 +88,6 @@
       "topPercent": 62,
       "speed": 30,
       "note": "Still learning timing and positioning, with inconsistent reads under pressure.",
-      "style": "Developing support player who needs cleaner decisions and better recovery movement.",
       "highlights": [
         "Rotational energy",
         "Learns quickly",
@@ -114,8 +112,7 @@
       "overall": 79,
       "topPercent": 28,
       "speed": 30,
-      "note": "Veteran leader who has been playing since age 13, throws decently, catches well, and keeps teammates organized.",
-      "style": "Short, mobile team-first captain who steadies the floor with reliable hands and smart leadership.",
+      "note": "Knows the call. Listen to him. Veteran leader who has been playing since age 13, throws decently, catches well, and keeps teammates organized.",
       "highlights": [
         "Great leader",
         "Reliable catcher",
@@ -129,6 +126,31 @@
         "catching": 8,
         "awareness": 9,
         "accuracy": 7
+      }
+    },
+    {
+      "id": "brandon-cook-two-way-anchor",
+      "name": "Brandon Cook",
+      "age": 31,
+      "team": "South Squad",
+      "role": "Two-Way Anchor",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "Power-first anchor with elite awareness, strong hands, and disciplined survival under pressure.",
+      "highlights": [
+        "10/10 power",
+        "Elite court awareness",
+        "High-end catching"
+      ],
+      "skills": {
+        "power": 10,
+        "stamina": 9,
+        "agility": 8,
+        "dodging": 9,
+        "catching": 9,
+        "awareness": 10,
+        "accuracy": 8
       }
     }
   ]

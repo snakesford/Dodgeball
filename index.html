@@ -64,19 +64,23 @@
         aria-modal="true"
         aria-labelledby="detail-name"
       >
-        <button class="detail-close" type="button" aria-label="Close player details">
-          Close
-        </button>
+        <div class="detail-header">
+          <div class="detail-badge-row">
+            <span class="tag">Detailed View</span>
+            <div class="rating-group">
+              <span class="rating" id="detail-top-percent">Top 7%</span>
+              <span class="rating" id="detail-score">Score 92</span>
+            </div>
+          </div>
+
+          <button class="detail-close" type="button" aria-label="Close player details">
+            Close
+          </button>
+        </div>
 
         <div class="detail-layout">
+
           <div class="detail-visual">
-            <div class="detail-badge-row">
-              <span class="tag">Detailed View</span>
-              <div class="rating-group">
-                <span class="rating" id="detail-top-percent">Top 7%</span>
-                <span class="rating" id="detail-score">Score 92</span>
-              </div>
-            </div>
             <div class="detail-image-wrap rarity-legendary" id="detail-image-wrap">
               <img
                 src="./stephen-profile.svg"
@@ -86,6 +90,7 @@
                 height="220"
               />
             </div>
+            <p class="player-meta detail-image-meta" id="detail-meta">Age 24 • West Squad</p>
             <div class="detail-skill-bars">
               <div class="skill-row">
                 <div class="skill-head">
@@ -136,6 +141,13 @@
                 </div>
                 <div class="skill-track"><span class="skill-fill" id="skill-accuracy-bar"></span></div>
               </div>
+              <div class="skill-row" id="skill-extra-row" hidden>
+                <div class="skill-head">
+                  <span id="skill-extra-label">Creativity with Swears</span>
+                  <span id="skill-extra-value">10/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-extra-bar"></span></div>
+              </div>
             </div>
           </div>
 
@@ -143,17 +155,21 @@
             <div>
               <p class="player-role" id="detail-role">Two-Way Captain</p>
               <h2 id="detail-name">Stephen</h2>
-              <p class="player-meta" id="detail-meta">Age 24 • West Squad</p>
             </div>
 
-            <p class="detail-style" id="detail-style">
-              Balanced control, strong resets, and smart pressure.
-            </p>
+            <div class="detail-note">
+              <p class="search-label">Note</p>
+              <p id="detail-note"></p>
+            </div>
 
             <dl class="detail-stat-grid">
               <div>
                 <dt>Throw Speed</dt>
                 <dd id="detail-speed">74 mph</dd>
+              </div>
+              <div>
+                <dt>Plays Most Like</dt>
+                <dd id="detail-plays-most-like"></dd>
               </div>
             </dl>
 

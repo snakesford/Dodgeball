@@ -241,6 +241,7 @@ const buildSearchText = (player) =>
     player.age,
     player.role,
     player.team,
+    player.trait,
     player.note,
     player.style,
     player.catches,
@@ -284,6 +285,11 @@ const createCardMarkup = (player) => `
         <h2>${escapeHtml(player.name)}</h2>
       </div>
       <p class="player-meta">Age ${escapeHtml(player.age)} • ${escapeHtml(player.team)}</p>
+      ${
+        player.trait
+          ? `<p class="player-trait" aria-label="Trait">${escapeHtml(player.trait)}</p>`
+          : ""
+      }
       <p class="player-note">${escapeHtml(player.note)}</p>
     </div>
 

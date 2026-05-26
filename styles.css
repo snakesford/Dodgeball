@@ -169,6 +169,7 @@ a {
 
 .player-card {
   display: grid;
+  align-content: start;
   gap: 1.25rem;
   padding: 1.35rem;
   border: 1px solid rgba(16, 34, 44, 0.08);
@@ -190,8 +191,9 @@ a {
 .card-topline {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
+  min-height: 2rem;
 }
 
 .tag,
@@ -206,6 +208,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .tag {
@@ -220,6 +223,10 @@ a {
 .profile-wrap {
   display: flex;
   justify-content: center;
+  align-items: center;
+  width: min(100%, 350px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
   padding: 0.8rem;
   border-radius: 1.25rem;
   border: 3px solid transparent;
@@ -230,7 +237,8 @@ a {
 
 .profile-image {
   width: min(100%, 220px);
-  height: auto;
+  height: 220px;
+  object-fit: contain;
 }
 
 .card-copy {
@@ -257,6 +265,22 @@ a {
   margin: 0;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+.player-trait {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(215, 79, 42, 0.2);
+  border-radius: 999px;
+  background: rgba(215, 79, 42, 0.08);
+  color: #8f2f11;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .player-note {
@@ -533,6 +557,14 @@ a {
   .player-card {
     padding: 1rem;
     border-radius: 1.25rem;
+  }
+
+  .profile-wrap {
+    width: min(100%, 212px);
+  }
+
+  .profile-image {
+    height: 196px;
   }
 
   .stat-list {

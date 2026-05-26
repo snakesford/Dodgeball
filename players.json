@@ -107,6 +107,43 @@
         "awareness": 4,
         "accuracy": 6
       }
+    },
+    {
+      "id": "allyn-thomas-field-captain",
+      "name": "Allyn Thomas",
+      "age": 38,
+      "team": "West Squad",
+      "role": "Field Captain",
+      "overall": 79,
+      "topPercent": 28,
+      "catches": 14,
+      "speed": 68,
+      "winrate": 76,
+      "stamina": 81,
+      "trait": "Yells",
+      "power": 6,
+      "dodging": 8,
+      "catching": 8,
+      "accuracy": 74,
+      "agility": 84,
+      "awareness": 9,
+      "discipline": 90,
+      "hands": 86,
+      "note": "Veteran leader who has been playing since age 13, throws decently, catches well, and keeps teammates organized.",
+      "style": "Short, mobile team-first captain who steadies the floor with reliable hands and smart leadership.",
+      "highlights": [
+        "Great leader",
+        "Reliable catcher",
+        "Mobile team player"
+      ],
+      "skills": {
+        "power": 6,
+        "agility": 8,
+        "dodging": 8,
+        "catching": 8,
+        "awareness": 9,
+        "accuracy": 7
+      }
     }
   ]
 }

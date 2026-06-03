@@ -413,6 +413,10 @@ const sortPlayers = (list, mode) => {
       return a.name.localeCompare(b.name);
     }
 
+    if (mode === "name-desc") {
+      return b.name.localeCompare(a.name);
+    }
+
     if (mode === "age-asc") {
       return a.age - b.age;
     }
@@ -425,8 +429,8 @@ const sortPlayers = (list, mode) => {
       return b.score - a.score;
     }
 
-    if (mode === "catches-desc") {
-      return b.catches - a.catches;
+    if (mode === "overall-asc") {
+      return a.score - b.score;
     }
 
     return a.defaultIndex - b.defaultIndex;
@@ -437,7 +441,7 @@ const sortPlayers = (list, mode) => {
 
 const updateCards = () => {
   const query = searchInput?.value.trim().toLowerCase() || "";
-  const mode = sortSelect?.value || "default";
+  const mode = sortSelect?.value || "name-asc";
 
   visiblePlayers = players.filter((player) => player.searchText.includes(query));
   visiblePlayers = sortPlayers(visiblePlayers, mode);

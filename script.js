@@ -81,6 +81,57 @@ let players = [];
 let visiblePlayers = [];
 let activeCard = null;
 const missingValueLabel = "No value currently";
+const pastTeamAliasOverrides = {
+  allyn: "allyn thomas",
+  anthony: "anthony",
+  arielle: "arielle deangelo",
+  ben: "ben villarreal",
+  brandon: "brandon cook",
+  brian: "brian damore",
+  chance: "chance morrison",
+  "dan course": "daniel course",
+  daniel: "daniel beranek",
+  emmett: "emmett austin",
+  eric: "eric",
+  evan: "evan",
+  grace: "grace rowan",
+  greg: "greg",
+  guard: "nathaniel guard",
+  james: "james wright",
+  "james a": "james alston",
+  julie: "julia thomas",
+  "julie thomas": "julia thomas",
+  justin: "justin p vignac",
+  "justin vignac": "justin p vignac",
+  kayla: "kayla seliner",
+  kytoosh: "kytoosh szumowski",
+  kristin: "kristin nelson",
+  kyle: "kyle whiteaker",
+  leo: "leonardo reyna",
+  mangold: "stephen mangold",
+  maria: "maria lara",
+  marisol: "marisol shankar",
+  matt: "matt",
+  mikael: "mikael koiv",
+  "nat reasor": "nat reasor",
+  "nathaniel vanguard": "nathaniel guard",
+  philip: "philip notaro",
+  rae: "rae",
+  raeanne: "raeanne romito",
+  renzo: "renzo",
+  ricky: "rickey serret",
+  sarvesh: "sarvesh biradar",
+  sam: "sam downs",
+  sean: "sean cahill",
+  soham: "soham nandi",
+  steven: "steven ennis",
+  "stephen mangold": "stephen mangold",
+  theo: "theo belesiotis",
+  tim: "tim frew",
+  justine: "justine",
+  lawrence: "lawrence",
+  v: "vaibhav murthy",
+};
 
 const clampSkill = (value, minimum = 1) => Math.max(minimum, Math.min(10, Number(value) || 0));
 const formatAgeRange = (age) => {
@@ -108,6 +159,14 @@ const displayListValue = (list) => {
 };
 
 const hasDisplayValue = (value) => String(value ?? "").trim().length > 0;
+const normalizeLookupName = (value) =>
+  String(value ?? "")
+    .replace(/\s*\([^)]*\)\s*/g, " ")
+    .replace(/\s*\/\s*/g, " ")
+    .replace(/[^a-zA-Z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
 
 const rarityClasses = [
   "rarity-common",
@@ -127,29 +186,390 @@ const tierSortOrder = {
 
 const pastTeamsData = [
   {
-    name: "Fish in a Barrel",
-    winRate: "45.39%",
-    players: [
-      "James Wright",
-      "Evan Sucks at Madden",
-      "Emmett Austin",
-      "Daniel Silva",
-      "Nat Reasor",
-      "Kayla Seliner",
-      "Justin Vignac",
+    title: "Summer 2026 Teams",
+    teams: [
+      {
+        name: "Unnamed Team",
+        players: [
+          "Allyn (C)",
+          "Greg",
+          "Sarvesh Biradar",
+          "Ben Villarreal",
+          "KRIS WEINBENDER",
+          "Soham Nandi",
+          "Franny Hawk",
+        ],
+      },
+      {
+        name: "Unnamed Team 2",
+        players: [
+          "Stephen Mangold",
+          "James Alston",
+          "Steven Ennis",
+          "Matt",
+          "Julia Thomas (C)",
+          "Tim Frew",
+          "Ann Adams",
+        ],
+      },
+      {
+        name: "Unnamed Team 3",
+        players: [
+          "Mikael Koiv (C)",
+          "Evan Nelson",
+          "James Wright",
+          "Daniel Course",
+          "Justin P Vignac",
+          "Arielle DeAngelo",
+          "Marisol Shankar",
+        ],
+      },
+      {
+        name: "Unnamed Team 4",
+        players: [
+          "Brandon L Cook (C)",
+          "Kyle Whiteaker",
+          "Grace Rowan",
+          "Anthony",
+          "Chance Morrison",
+          "Kristin Nelson",
+        ],
+      },
+      {
+        name: "Unnamed Team 5",
+        players: [
+          "Ricky Serret (C)",
+          "Renzo",
+          "Brian DAmore",
+          "Leonardo Reyna",
+          "Eric",
+          "Kytoosh Szumowski",
+        ],
+      },
+      {
+        name: "Unnamed Team 6",
+        players: [
+          "Emmett Austin",
+          "Nathaniel Guard",
+          "Sam Downs (C)",
+          "Daniel Beranek",
+          "Theo Belesiotis",
+          "Lawrence",
+          "Vaibhav Murthy",
+        ],
+      },
     ],
   },
   {
-    name: "Not in the Face",
-    winRate: "51.22%",
-    players: [
-      "Daniel",
-      "Allyn",
-      "Eddie Arroyo",
-      "Emmett",
-      "Jeremy Wale",
-      "Justin Vignac",
-      "Arielle",
+    title: "Spring / Summer 2026 Teams",
+    teams: [
+      {
+        name: "Unnamed Team",
+        players: [
+          "Allyn",
+          "Rae",
+          "Arielle",
+          "Sean",
+          "Dan Course",
+          "Eric",
+          "Brandon",
+        ],
+      },
+      {
+        name: "Unnamed Team 2",
+        players: [
+          "Evan",
+          "Daniel Beranek",
+          "Sarvesh",
+          "Justine",
+          "Chance",
+          "Katie",
+          "Renzo",
+        ],
+      },
+      {
+        name: "Unnamed Team 3",
+        players: [
+          "Mangold",
+          "Kristin",
+          "Kayla",
+          "Greg",
+          "V",
+          "James",
+          "Ben",
+        ],
+      },
+      {
+        name: "Unnamed Team 4",
+        players: [
+          "Ricky",
+          "Julie",
+          "Tim",
+          "Leo",
+          "Kyle",
+          "Justin",
+          "Grace",
+        ],
+      },
+      {
+        name: "Unnamed Team 5",
+        players: [
+          "Mikael",
+          "Theo",
+          "Kytoosh",
+          "Matt",
+          "James",
+          "Steven",
+          "Guard",
+        ],
+      },
+      {
+        name: "Down to Clown",
+        players: [
+          "Sam",
+          "Franny",
+          "Ann",
+          "Marisol",
+          "Brian",
+          "Emmett",
+          "Darcy",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Spring 2026 Teams",
+    teams: [
+      {
+        name: "Unnamed Team",
+        players: [
+          "Allyn Thomas",
+          "Philip Notaro",
+          "Leonardo Reyna",
+          "Matthew Ostrander",
+          "James Wright",
+          "Franny Hawk",
+          "Tim Frew",
+        ],
+      },
+      {
+        name: "Grace",
+        players: [
+          "Stephen Mangold",
+          "Grace Rowan",
+          "Alex Primeaux",
+          "Chance Morrison",
+          "Justine",
+          "Ben Villarreal",
+          "Kayla Seliner",
+        ],
+      },
+      {
+        name: "Team Squints",
+        players: [
+          "Kyle Whiteaker",
+          "Emmett",
+          "Sarvesh",
+          "Trey / Brian DAmore",
+          "Kytoosh Szumowski",
+          "Anthony",
+          "Arielle DeAngelo",
+        ],
+      },
+      {
+        name: "Unnamed Team 3",
+        players: [
+          "Mikael Koiv",
+          "Aksel Thorsfeldt",
+          "Ryan Worthley",
+          "Eddie Arroyo",
+          "Steven Ennis",
+          "Sam Downs",
+          "Maria Lara",
+        ],
+      },
+      {
+        name: "Unnamed Team 2",
+        players: [
+          "Brandon Cook",
+          "Evan Nelson",
+          "Jeremy Wale",
+          "Travis Amundsen",
+          "Justin Vignac",
+          "Lawrence David Scroggs",
+          "Raeanne",
+        ],
+      },
+      {
+        name: "Unnamed Team 4",
+        players: [
+          "Greg",
+          "Nathaniel Vanguard",
+          "Daniel Beranek",
+          "Daniel Course",
+          "Eric Nygren",
+          "Sean Cahill",
+          "Marisol Shankar",
+        ],
+      },
+    ],
+  },
+  {
+    title: "Winter 2025 / Early 2026 Teams",
+    teams: [
+      {
+        name: "Unnamed Team",
+        players: [
+          "Julie Thomas",
+          "Brian",
+          "Greg",
+          "Ryan Worthley",
+          "Aksel Thorsfeldt",
+          "Eddie Arroyo",
+          "Sarvesh",
+        ],
+      },
+      {
+        name: "Fish in a Barrel",
+        winRate: "45.39%",
+        players: [
+          "James Wright",
+          "Evan Sucks at Madden",
+          "Emmett Austin",
+          "Daniel Silva",
+          "Nat Reasor",
+          "Kayla Seliner",
+          "Justin Vignac",
+        ],
+      },
+      {
+        name: "Unnamed Team 2",
+        players: [
+          "Allyn",
+          "Grace Rowan",
+          "Nathaniel Vanguard",
+          "Sean Cahill",
+          "Chance Morrison",
+          "Tim Frew",
+          "Evan Richards",
+        ],
+      },
+      {
+        name: "Green Eggs and Sam",
+        winRate: "41.72%",
+        players: [
+          "Sam",
+          "Stephen Mangold",
+          "Theo Belesiotis",
+          "Daniel Course",
+          "Marisol Shankar",
+          "Ben Villarreal",
+          "Kytoosh Szumowski",
+        ],
+      },
+      {
+        name: "Unnamed Team 3",
+        players: [
+          "Arielle DeAngelo",
+          "Brandon",
+          "Daniel Beranek",
+          "Philip Notaro",
+          "Eric Nygren",
+          "Travis Amundsen",
+          "Leonardo Reyna",
+        ],
+      },
+      {
+        name: "Decepticommies",
+        winRate: "54.60%",
+        players: [
+          "Mikael",
+          "Kyle Whiteaker",
+          "Steven Ennis",
+          "Maria",
+          "Lawrence Scroggs",
+          "Jack Hibner",
+          "Raeanne",
+        ],
+      },
+    ],
+  },
+  {
+    title: "End of Year 2025 Teams",
+    teams: [
+      {
+        name: "Grace Under Fire",
+        players: [
+          "Grace",
+          "Theo Belesiotis",
+          "Julie Thomas",
+          "Ben Villarreal",
+          "Brian DAmore",
+          "James A",
+          "Kyle Beasley",
+        ],
+      },
+      {
+        name: "Not in the Face",
+        winRate: "51.22%",
+        players: [
+          "Daniel",
+          "Allyn",
+          "Eddie Arroyo",
+          "Emmett",
+          "Jeremy Wale",
+          "Justin Vignac",
+          "Arielle",
+        ],
+      },
+      {
+        name: "Unnamed Team",
+        players: [
+          "James",
+          "Evan Nelson",
+          "Stephen Mangold",
+          "Greg",
+          "Ryan Worthley",
+          "Thomas Glascock",
+          "Marisol",
+        ],
+      },
+      {
+        name: "Wham Bam TY Sam",
+        players: [
+          "Sam",
+          "Justine",
+          "Travis Amundsen",
+          "Ricky Serret",
+          "Darcy",
+          "Katie Granger",
+          "Kayla",
+        ],
+      },
+      {
+        name: "Unnamed Team 2",
+        players: [
+          "Philip",
+          "Kytoosh Szumowski",
+          "Mikael",
+          "Jack Hibner",
+          "Chance Morrison",
+          "Sarvesh",
+          "Trey",
+        ],
+      },
+      {
+        name: "Unnamed Team 3",
+        players: [
+          "Steven",
+          "Mitchel Hanson",
+          "Raeanne Romito",
+          "Brandon Cook",
+          "Michael Anisimov",
+          "Evan Richards",
+          "Lawrence",
+        ],
+      },
     ],
   },
 ];
@@ -482,6 +902,62 @@ const comparePlayersByTopRank = (a, b) => {
   return a.name.localeCompare(b.name);
 };
 
+const buildPlayerLookup = (list) => {
+  const lookup = new Map();
+
+  list.forEach((player) => {
+    const normalizedName = normalizeLookupName(player.name);
+    const tokens = normalizedName.split(" ").filter(Boolean);
+    const aliases = new Set([normalizedName, normalizeLookupName(player.id)]);
+
+    if (tokens.length > 0) {
+      aliases.add(tokens[0]);
+      aliases.add(tokens[tokens.length - 1]);
+    }
+
+    if (tokens.length > 1) {
+      aliases.add(`${tokens[0]} ${tokens[tokens.length - 1]}`);
+    }
+
+    aliases.forEach((alias) => {
+      if (alias && !lookup.has(alias)) {
+        lookup.set(alias, player);
+      }
+    });
+  });
+
+  return lookup;
+};
+
+const findPastTeamPlayer = (name, lookup) => {
+  const normalizedName = normalizeLookupName(name);
+  const overrideName = pastTeamAliasOverrides[normalizedName];
+
+  if (overrideName && lookup.has(overrideName)) {
+    return lookup.get(overrideName);
+  }
+
+  if (lookup.has(normalizedName)) {
+    return lookup.get(normalizedName);
+  }
+
+  const tokens = normalizedName.split(" ").filter(Boolean);
+
+  for (const token of tokens) {
+    const overrideToken = pastTeamAliasOverrides[token];
+
+    if (overrideToken && lookup.has(overrideToken)) {
+      return lookup.get(overrideToken);
+    }
+
+    if (lookup.has(token)) {
+      return lookup.get(token);
+    }
+  }
+
+  return null;
+};
+
 const applyTopPercentRanks = (list) => {
   const rankedIds = [...list]
     .sort(comparePlayersByTopRank)
@@ -593,29 +1069,71 @@ const renderPastTeams = () => {
     return;
   }
 
+  const playerLookup = buildPlayerLookup(players);
+
   pastTeamsList.innerHTML = pastTeamsData
     .map(
-      (team) => `
-        <article class="past-team-card">
-          <div class="past-team-head">
-            <div>
-              <p class="search-label">Team</p>
-              <h3>${escapeHtml(team.name)}</h3>
-            </div>
-            <div class="past-team-rate">
-              <p class="search-label">Win Rate</p>
-              <p>${escapeHtml(team.winRate)}</p>
-            </div>
+      (section) => `
+        <section class="past-team-section">
+          <div class="past-team-section-head">
+            <p class="search-label">Season</p>
+            <h3>${escapeHtml(section.title)}</h3>
           </div>
-          <div class="past-team-body">
-            <p class="search-label">Players</p>
-            <ul class="past-team-players">
-              ${team.players
-                .map((player) => `<li>${escapeHtml(player)}</li>`)
-                .join("")}
-            </ul>
+          <div class="past-team-section-grid">
+            ${section.teams
+              .map(
+                (team) => `
+                  <article class="past-team-card">
+                    <div class="past-team-head">
+                      <div>
+                        <p class="search-label">Team</p>
+                        <h4>${escapeHtml(team.name)}</h4>
+                      </div>
+                      ${
+                        team.winRate
+                          ? `<div class="past-team-rate">
+                        <p class="search-label">Win Rate</p>
+                        <p>${escapeHtml(team.winRate)}</p>
+                      </div>`
+                          : ""
+                      }
+                    </div>
+                    <div class="past-team-body">
+                      <p class="search-label">Players</p>
+                      <ul class="past-team-players">
+                        ${[...team.players]
+                          .map((playerName) => ({
+                            name: playerName,
+                            player: findPastTeamPlayer(playerName, playerLookup),
+                          }))
+                          .sort((a, b) => {
+                            if (a.player && b.player) {
+                              return comparePlayersByTopRank(a.player, b.player);
+                            }
+
+                            if (a.player && !b.player) {
+                              return -1;
+                            }
+
+                            if (!a.player && b.player) {
+                              return 1;
+                            }
+
+                            return a.name.localeCompare(b.name);
+                          })
+                          .map(
+                            ({ name, player }) =>
+                              `<li class="${player ? escapeHtml(player.tier.className) : ""}">${escapeHtml(name)}</li>`,
+                          )
+                          .join("")}
+                      </ul>
+                    </div>
+                  </article>
+                `,
+              )
+              .join("")}
           </div>
-        </article>
+        </section>
       `,
     )
     .join("");
@@ -810,6 +1328,7 @@ const loadPlayers = async () => {
     );
 
     loadingState?.remove();
+    renderPastTeams();
     updateCards();
   } catch (error) {
     if (loadingState) {

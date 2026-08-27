@@ -7,7 +7,7 @@
       "role": "Closing Specialist",
       "tier": "S",
       "overall": 93,
-      "topPercent": 22,
+      "topPercent": 2,
       "speed": 30,
       "playsMostLike": "Venus flytrap",
       "note": "Efficient late in rounds with smart positioning and consistent finishing throws.",
@@ -34,7 +34,7 @@
       "role": "Power Striker",
       "tier": "S",
       "overall": 92,
-      "topPercent": 2,
+      "topPercent": 20,
       "speed": 30,
       "note": "Heavy thrower with quick feet and strong late-game finishing pressure.",
       "highlights": [
@@ -61,7 +61,7 @@
       "role": "Two-Way Catcher",
       "tier": "S",
       "overall": 90,
-      "topPercent": 5,
+      "topPercent": 22,
       "speed": 54,
       "note": "Mid-level thrower with a 54 mph max, but an excellent catcher who changes rallies with secure hands.",
       "highlights": [
@@ -87,7 +87,7 @@
       "role": "Field Captain",
       "tier": "S",
       "overall": 79,
-      "topPercent": 15,
+      "topPercent": 10,
       "speed": 30,
       "note": "Knows the call. Listen to him. Veteran leader who has been playing since age 13, throws decently, catches well, and keeps teammates organized.",
       "highlights": [
@@ -113,7 +113,7 @@
       "role": "Field Captain",
       "tier": "S",
       "overall": 79,
-      "topPercent": 17,
+      "topPercent": 7,
       "speed": 30,
       "note": "Bossy. Good at throwing, even better at catching.",
       "highlights": [
@@ -138,7 +138,7 @@
       "role": "Two-Way Anchor",
       "tier": "S",
       "overall": 94,
-      "topPercent": 20,
+      "topPercent": 5,
       "speed": 30,
       "note": "Power-first anchor with elite awareness, strong hands, and disciplined survival under pressure.",
       "highlights": [
@@ -164,7 +164,7 @@
       "role": "",
       "tier": "S",
       "overall": 94,
-      "topPercent": 10,
+      "topPercent": 15,
       "speed": 30,
       "note": "Power-first anchor with elite awareness, strong hands, and disciplined survival under pressure.",
       "highlights": [
@@ -217,7 +217,7 @@
       "role": "Sniper",
       "tier": "S",
       "overall": 94,
-      "topPercent": 7,
+      "topPercent": 17,
       "speed": 30,
       "note": "Crazy arm. Gets frustrated quickly. Doesn't care at all about protecting his body. Gives it everything.",
       "highlights": [
@@ -243,7 +243,7 @@
       "role": "Well-Rounded",
       "tier": "A",
       "overall": 94,
-      "topPercent": 32,
+      "topPercent": 27,
       "speed": 30,
       "note": "Good arm. Throws low and aims for feet. Great at catching. Small dude.",
       "highlights": [
@@ -269,7 +269,7 @@
       "role": "Well-Rounded",
       "tier": "A",
       "overall": 94,
-      "topPercent": 34,
+      "topPercent": 24,
       "speed": 30,
       "note": "Good arm. Small player, hard to hit.",
       "highlights": [
@@ -317,7 +317,7 @@
       "name": "James Alston",
       "tier": "A",
       "note": "",
-      "topPercent": 27,
+      "topPercent": 32,
       "rank": 4
     },
     {
@@ -325,7 +325,7 @@
       "name": "Nathaniel Guard",
       "tier": "A",
       "note": "",
-      "topPercent": 24,
+      "topPercent": 34,
       "rank": 5
     },
     {
@@ -333,7 +333,7 @@
       "name": "Daniel Beranek",
       "tier": "B",
       "note": "",
-      "topPercent": 44,
+      "topPercent": 39,
       "rank": 2
     },
     {
@@ -341,7 +341,7 @@
       "name": "Sam Downs",
       "tier": "B",
       "note": "",
-      "topPercent": 39,
+      "topPercent": 44,
       "rank": 4
     },
     {
@@ -357,7 +357,7 @@
       "name": "Kris Weinbender",
       "tier": "B",
       "note": "",
-      "topPercent": 46,
+      "topPercent": 37,
       "rank": 1
     },
     {
@@ -365,7 +365,7 @@
       "name": "Daniel Course",
       "tier": "B",
       "note": "",
-      "topPercent": 37,
+      "topPercent": 46,
       "rank": 5
     },
     {
@@ -373,7 +373,7 @@
       "name": "Eric",
       "tier": "C",
       "note": "",
-      "topPercent": 56,
+      "topPercent": 63,
       "rank": 8
     },
     {
@@ -381,7 +381,7 @@
       "name": "Kytoosh Szumowski",
       "tier": "C",
       "note": "",
-      "topPercent": 68,
+      "topPercent": 51,
       "rank": 2
     },
     {
@@ -389,7 +389,7 @@
       "name": "Leonardo Reyna",
       "tier": "C",
       "note": "",
-      "topPercent": 66,
+      "topPercent": 54,
       "rank": 3
     },
     {
@@ -397,7 +397,7 @@
       "name": "Matt",
       "tier": "C",
       "note": "",
-      "topPercent": 63,
+      "topPercent": 56,
       "rank": 5
     },
     {
@@ -405,7 +405,7 @@
       "name": "Grace Rowan",
       "tier": "C",
       "note": "",
-      "topPercent": 71,
+      "topPercent": 49,
       "rank": 1
     },
     {
@@ -413,7 +413,7 @@
       "name": "Julia Thomas",
       "tier": "C",
       "note": "",
-      "topPercent": 61,
+      "topPercent": 59,
       "rank": 6
     },
     {
@@ -421,7 +421,7 @@
       "name": "Steven Ennis",
       "tier": "C",
       "note": "",
-      "topPercent": 59,
+      "topPercent": 61,
       "rank": 7
     },
     {
@@ -429,7 +429,7 @@
       "name": "James Wright",
       "tier": "C",
       "note": "",
-      "topPercent": 51,
+      "topPercent": 68,
       "rank": 10
     },
     {
@@ -437,7 +437,7 @@
       "name": "Kristin Nelson",
       "tier": "C",
       "note": "",
-      "topPercent": 49,
+      "topPercent": 71,
       "rank": 11
     },
     {
@@ -445,7 +445,7 @@
       "name": "Lawrence",
       "tier": "C",
       "note": "",
-      "topPercent": 54,
+      "topPercent": 66,
       "rank": 9
     },
     {
@@ -480,7 +480,7 @@
       "name": "Theo Belesiotis",
       "tier": "D",
       "note": "",
-      "topPercent": 95,
+      "topPercent": 76,
       "rank": 2
     },
     {
@@ -488,7 +488,7 @@
       "name": "Tim Frew",
       "tier": "D",
       "note": "",
-      "topPercent": 93,
+      "topPercent": 78,
       "rank": 3
     },
     {
@@ -496,7 +496,7 @@
       "name": "Ann Adams",
       "tier": "D",
       "note": "",
-      "topPercent": 78,
+      "topPercent": 93,
       "rank": 9
     },
     {
@@ -504,7 +504,7 @@
       "name": "Ben Villarreal",
       "tier": "D",
       "note": "",
-      "topPercent": 98,
+      "topPercent": 73,
       "rank": 1
     },
     {
@@ -512,7 +512,7 @@
       "name": "Soham Nandi",
       "tier": "D",
       "note": "",
-      "topPercent": 88,
+      "topPercent": 83,
       "rank": 5
     },
     {
@@ -520,7 +520,7 @@
       "name": "Franny Hawk",
       "tier": "D",
       "note": "",
-      "topPercent": 80,
+      "topPercent": 90,
       "rank": 8
     },
     {
@@ -528,7 +528,7 @@
       "name": "Justin P Vignac",
       "tier": "D",
       "note": "",
-      "topPercent": 83,
+      "topPercent": 88,
       "rank": 7
     },
     {
@@ -536,7 +536,7 @@
       "name": "Arielle DeAngelo",
       "tier": "D",
       "note": "",
-      "topPercent": 73,
+      "topPercent": 98,
       "rank": 11
     },
     {
@@ -544,7 +544,7 @@
       "name": "Marisol Shankar",
       "tier": "D",
       "note": "",
-      "topPercent": 76,
+      "topPercent": 95,
       "rank": 10
     },
     {
@@ -552,7 +552,7 @@
       "name": "Anthony",
       "tier": "D",
       "note": "",
-      "topPercent": 90,
+      "topPercent": 80,
       "rank": 4
     },
     {

@@ -307,7 +307,7 @@ const getTierInfo = (score) => {
   }
 
   if (score >= 62) {
-    return { code: "C", label: "- Situational", className: "tier-c" };
+    return { code: "C", label: "- Niche", className: "tier-c" };
   }
 
   return { code: "D", label: "- Weak", className: "tier-d" };
@@ -329,7 +329,7 @@ const getTierInfoFromCode = (tierCode) => {
   }
 
   if (normalizedCode === "C") {
-    return { code: "C", label: "- Situational", className: "tier-c" };
+    return { code: "C", label: "- Niche", className: "tier-c" };
   }
 
   if (normalizedCode === "D") {
@@ -425,10 +425,19 @@ const comparePlayersByTopRank = (a, b) => {
     return tierDiff;
   }
 
-  const rankDiff = readNumber(b.rank) - readNumber(a.rank);
+  const aRank = readNumber(a.rank);
+  const bRank = readNumber(b.rank);
 
-  if (rankDiff !== 0) {
-    return rankDiff;
+  if (aRank > 0 && bRank > 0 && aRank !== bRank) {
+    return aRank - bRank;
+  }
+
+  if (aRank > 0 && bRank === 0) {
+    return -1;
+  }
+
+  if (aRank === 0 && bRank > 0) {
+    return 1;
   }
 
   const scoreDiff = readNumber(b.score) - readNumber(a.score);
@@ -453,6 +462,8 @@ const applyTopPercentRanks = (list) => {
 
     return {
       ...player,
+      overallRank: rankIndex + 1,
+      totalPlayers,
       topPercent,
     };
   });
@@ -552,6 +563,7 @@ const createCardMarkup = (player) => `
   >
     <div class="card-topline">
       <span class="rating">Top ${escapeHtml(player.topPercent)}%</span>
+      <span class="rating">${escapeHtml(player.overallRank)}/${escapeHtml(player.totalPlayers)}</span>
       <span class="rating ${escapeHtml(player.tier.className)}">Tier ${escapeHtml(player.tier.code)} ${escapeHtml(player.tier.label)}</span>
     </div>
 

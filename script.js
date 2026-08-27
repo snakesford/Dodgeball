@@ -393,6 +393,7 @@ const normalizePlayer = (player, index) => {
     age: readNumber(safePlayer.age),
     role: String(safePlayer.role || ""),
     tier: safePlayer.tier,
+    rank: readNumber(safePlayer.rank),
     effort: Math.max(0, Math.min(10, readNumber(safePlayer.effort))),
     overall: readNumber(safePlayer.overall),
     topPercent: readNumber(safePlayer.topPercent),
@@ -415,9 +416,33 @@ const normalizePlayer = (player, index) => {
   };
 };
 
+const comparePlayersByTopRank = (a, b) => {
+  const tierDiff =
+    (tierSortOrder[a.tier?.code] ?? Number.MAX_SAFE_INTEGER) -
+    (tierSortOrder[b.tier?.code] ?? Number.MAX_SAFE_INTEGER);
+
+  if (tierDiff !== 0) {
+    return tierDiff;
+  }
+
+  const rankDiff = readNumber(b.rank) - readNumber(a.rank);
+
+  if (rankDiff !== 0) {
+    return rankDiff;
+  }
+
+  const scoreDiff = readNumber(b.score) - readNumber(a.score);
+
+  if (scoreDiff !== 0) {
+    return scoreDiff;
+  }
+
+  return a.name.localeCompare(b.name);
+};
+
 const applyTopPercentRanks = (list) => {
   const rankedIds = [...list]
-    .sort((a, b) => b.score - a.score)
+    .sort(comparePlayersByTopRank)
     .map((player) => player.id);
 
   const totalPlayers = Math.max(rankedIds.length, 1);
@@ -505,6 +530,7 @@ const buildSearchText = (player) =>
     player.catches,
     player.speed,
     player.effort,
+    player.rank,
     player.stamina,
     player.overall,
     player.tier?.code,
@@ -625,19 +651,11 @@ const sortPlayers = (list, mode) => {
     }
 
     if (mode === "tier-asc") {
-      const tierDiff =
-        (tierSortOrder[a.tier?.code] ?? Number.MAX_SAFE_INTEGER) -
-        (tierSortOrder[b.tier?.code] ?? Number.MAX_SAFE_INTEGER);
-
-      return tierDiff || b.score - a.score || a.name.localeCompare(b.name);
+      return comparePlayersByTopRank(a, b);
     }
 
     if (mode === "tier-desc") {
-      const tierDiff =
-        (tierSortOrder[b.tier?.code] ?? Number.MAX_SAFE_INTEGER) -
-        (tierSortOrder[a.tier?.code] ?? Number.MAX_SAFE_INTEGER);
-
-      return tierDiff || b.score - a.score || a.name.localeCompare(b.name);
+      return comparePlayersByTopRank(b, a);
     }
 
     return a.defaultIndex - b.defaultIndex;

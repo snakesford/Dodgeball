@@ -235,6 +235,31 @@ a {
     #fff;
 }
 
+.profile-wrap.profile-tier-s {
+  border-color: #d4a72a;
+  box-shadow: 0 0 0 1px rgba(212, 167, 42, 0.26);
+}
+
+.profile-wrap.profile-tier-a {
+  border-color: #6f3df4;
+  box-shadow: 0 0 0 1px rgba(111, 61, 244, 0.24);
+}
+
+.profile-wrap.profile-tier-b {
+  border-color: #3a6fe8;
+  box-shadow: 0 0 0 1px rgba(58, 111, 232, 0.22);
+}
+
+.profile-wrap.profile-tier-c {
+  border-color: #2c9a57;
+  box-shadow: 0 0 0 1px rgba(44, 154, 87, 0.22);
+}
+
+.profile-wrap.profile-tier-d {
+  border-color: #9ea7ae;
+  box-shadow: 0 0 0 1px rgba(158, 167, 174, 0.2);
+}
+
 .profile-image {
   width: min(100%, 220px);
   height: 220px;

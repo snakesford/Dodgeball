@@ -295,45 +295,45 @@ const getRarityClass = (score) => {
 
 const getTierInfo = (score) => {
   if (score >= 90) {
-    return { code: "S", label: "Star", className: "tier-s" };
+    return { code: "S", label: "- Star", className: "tier-s" };
   }
 
   if (score >= 82) {
-    return { code: "A", label: "Key", className: "tier-a" };
+    return { code: "A", label: "- Key", className: "tier-a" };
   }
 
   if (score >= 72) {
-    return { code: "B", label: "Solid", className: "tier-b" };
+    return { code: "B", label: "- Solid", className: "tier-b" };
   }
 
   if (score >= 62) {
-    return { code: "C", label: "Situational", className: "tier-c" };
+    return { code: "C", label: "- Situational", className: "tier-c" };
   }
 
-  return { code: "D", label: "Weak", className: "tier-d" };
+  return { code: "D", label: "- Weak", className: "tier-d" };
 };
 
 const getTierInfoFromCode = (tierCode) => {
   const normalizedCode = String(tierCode || "").trim().toUpperCase();
 
   if (normalizedCode === "S") {
-    return { code: "S", label: "Star", className: "tier-s" };
+    return { code: "S", label: "- Star", className: "tier-s" };
   }
 
   if (normalizedCode === "A") {
-    return { code: "A", label: "Key", className: "tier-a" };
+    return { code: "A", label: "- Key", className: "tier-a" };
   }
 
   if (normalizedCode === "B") {
-    return { code: "B", label: "Solid", className: "tier-b" };
+    return { code: "B", label: "- Solid", className: "tier-b" };
   }
 
   if (normalizedCode === "C") {
-    return { code: "C", label: "Situational", className: "tier-c" };
+    return { code: "C", label: "- Situational", className: "tier-c" };
   }
 
   if (normalizedCode === "D") {
-    return { code: "D", label: "Weak", className: "tier-d" };
+    return { code: "D", label: "- Weak", className: "tier-d" };
   }
 
   return null;
@@ -529,7 +529,7 @@ const createCardMarkup = (player) => `
       <span class="rating ${escapeHtml(player.tier.className)}">Tier ${escapeHtml(player.tier.code)} ${escapeHtml(player.tier.label)}</span>
     </div>
 
-    <div class="profile-wrap ${escapeHtml(player.tier.className)}">
+    <div class="profile-wrap profile-${escapeHtml(player.tier.className)}">
       <img
         src="./stephen-profile.svg"
         alt="Illustrated profile portrait of ${escapeHtml(player.name)}"

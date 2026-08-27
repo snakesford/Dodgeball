@@ -555,6 +555,23 @@ a {
   font-weight: 700;
 }
 
+.card-skill-bars {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  border-radius: 1.15rem;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(250, 241, 230, 0.78) 100%);
+}
+
+.card-skill-bars .skill-head {
+  font-size: 0.82rem;
+}
+
+.card-skill-bars .skill-track {
+  height: 0.6rem;
+}
+
 @media (max-width: 720px) {
   .search-row {
     grid-template-columns: 1fr;

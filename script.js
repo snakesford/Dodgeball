@@ -5,6 +5,7 @@ const detailModal = document.querySelector("#detail-modal");
 const detailCloseButton = document.querySelector(".detail-close");
 const loadingState = document.querySelector("#loading-state");
 const detailImageWrap = document.querySelector("#detail-image-wrap");
+const detailSpeedRow = document.querySelector("#detail-speed-row");
 const detailExtraSkillRow = document.querySelector("#skill-extra-row");
 const detailExtraSkillLabel = document.querySelector("#skill-extra-label");
 
@@ -179,6 +180,34 @@ const readNumber = (value, fallback = 0) => {
   return Number.isFinite(numericValue) ? numericValue : fallback;
 };
 
+const hasSpeedValue = (value) => Number.isFinite(Number(value));
+
+const getSkillToneClass = (value) => {
+  const numericValue = clampSkill(value);
+
+  if (numericValue <= 2) {
+    return "is-low";
+  }
+
+  if (numericValue <= 4) {
+    return "is-ok";
+  }
+
+  if (numericValue <= 6) {
+    return "is-mid";
+  }
+
+  if (numericValue <= 8) {
+    return "is-high";
+  }
+
+  if (numericValue === 9) {
+    return "is-elite";
+  }
+
+  return "is-max";
+};
+
 const countMatches = (text, terms) =>
   terms.reduce((count, term) => count + (text.includes(term) ? 1 : 0), 0);
 
@@ -265,8 +294,14 @@ const openDetail = (playerId) => {
   detailFields.score.textContent = `Score ${player.score}`;
   detailFields.role.textContent = player.role;
   detailFields.name.textContent = player.name;
-  detailFields.meta.textContent = `Age ${formatAgeRange(player.age)} • ${player.team}`;
-  detailFields.speed.textContent = `${player.speed} mph`;
+  detailFields.meta.textContent = `Age ${formatAgeRange(player.age)}`;
+  if (hasSpeedValue(player.speed)) {
+    detailFields.speed.textContent = `${player.speed} mph`;
+    detailSpeedRow.hidden = false;
+  } else {
+    detailFields.speed.textContent = "";
+    detailSpeedRow.hidden = true;
+  }
   detailFields.playsMostLike.textContent = player.playsMostLike || "";
   detailFields.note.textContent = player.note || "";
   detailFields.highlights.textContent = player.highlights.join(", ");
@@ -309,7 +344,6 @@ const buildSearchText = (player) =>
     player.age,
     formatAgeRange(player.age),
     player.role,
-    player.team,
     player.trait,
     player.note,
     player.catches,
@@ -346,7 +380,7 @@ const createCardMarkup = (player) => `
       />
     </div>
 
-    <p class="player-meta">Age ${escapeHtml(formatAgeRange(player.age))} • ${escapeHtml(player.team)}</p>
+    <p class="player-meta">Age ${escapeHtml(formatAgeRange(player.age))}</p>
 
     <div class="card-copy">
       <div>
@@ -359,14 +393,62 @@ const createCardMarkup = (player) => `
           : ""
       }
       <p class="player-note">${escapeHtml(player.note)}</p>
-    </div>
 
-    <dl class="stat-list">
-      <div>
-        <dt>Throw Speed</dt>
-        <dd>${escapeHtml(player.speed)} mph</dd>
+      <div class="card-skill-bars" aria-label="Player skill breakdown">
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Power</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.power)}" style="width: ${escapeHtml(clampSkill(player.skills.power) * 10)}%"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Stamina</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.stamina)}" style="width: ${escapeHtml(clampSkill(player.skills.stamina) * 10)}%"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Agility</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.agility)}" style="width: ${escapeHtml(clampSkill(player.skills.agility) * 10)}%"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Dodging</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.dodging)}" style="width: ${escapeHtml(clampSkill(player.skills.dodging) * 10)}%"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Catching</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.catching)}" style="width: ${escapeHtml(clampSkill(player.skills.catching) * 10)}%"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Awareness</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.awareness)}" style="width: ${escapeHtml(clampSkill(player.skills.awareness) * 10)}%"></span></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-head">
+            <span>Accuracy</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.accuracy)}" style="width: ${escapeHtml(clampSkill(player.skills.accuracy) * 10)}%"></span></div>
+        </div>
+        ${
+          Number.isFinite(Number(player.skills.creativityWithSwears))
+            ? `<div class="skill-row">
+          <div class="skill-head">
+            <span>Swears</span>
+          </div>
+          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.creativityWithSwears)}" style="width: ${escapeHtml(clampSkill(player.skills.creativityWithSwears) * 10)}%"></span></div>
+        </div>`
+            : ""
+        }
       </div>
-    </dl>
+    </div>
   </article>
 `;
 

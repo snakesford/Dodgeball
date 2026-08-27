@@ -3,6 +3,10 @@ const sortSelect = document.querySelector("#sort-cards");
 const cardGrid = document.querySelector(".card-grid");
 const detailModal = document.querySelector("#detail-modal");
 const detailCloseButton = document.querySelector(".detail-close");
+const openPastTeamsButton = document.querySelector("#open-past-teams");
+const pastTeamsModal = document.querySelector("#past-teams-modal");
+const closePastTeamsButton = document.querySelector("#close-past-teams");
+const pastTeamsList = document.querySelector("#past-teams-list");
 const loadingState = document.querySelector("#loading-state");
 const detailImageWrap = document.querySelector("#detail-image-wrap");
 const detailSpeedRow = document.querySelector("#detail-speed-row");
@@ -120,6 +124,35 @@ const tierSortOrder = {
   C: 3,
   D: 4,
 };
+
+const pastTeamsData = [
+  {
+    name: "Fish in a Barrel",
+    winRate: "45.39%",
+    players: [
+      "James Wright",
+      "Evan Sucks at Madden",
+      "Emmett Austin",
+      "Daniel Silva",
+      "Nat Reasor",
+      "Kayla Seliner",
+      "Justin Vignac",
+    ],
+  },
+  {
+    name: "Not in the Face",
+    winRate: "51.22%",
+    players: [
+      "Daniel",
+      "Allyn",
+      "Eddie Arroyo",
+      "Emmett",
+      "Jeremy Wale",
+      "Justin Vignac",
+      "Arielle",
+    ],
+  },
+];
 
 const positiveTerms = [
   "calm",
@@ -530,6 +563,64 @@ const closeDetail = () => {
   activeCard?.focus();
 };
 
+const openPastTeams = () => {
+  if (!pastTeamsModal) {
+    return;
+  }
+
+  pastTeamsModal.hidden = false;
+  document.body.style.overflow = "hidden";
+  closePastTeamsButton?.focus();
+};
+
+const closePastTeams = () => {
+  if (!pastTeamsModal) {
+    return;
+  }
+
+  pastTeamsModal.hidden = true;
+  document.body.style.overflow = detailModal && !detailModal.hidden ? "hidden" : "";
+  openPastTeamsButton?.focus();
+};
+
+const renderPastTeams = () => {
+  if (!pastTeamsList) {
+    return;
+  }
+
+  if (pastTeamsData.length === 0) {
+    pastTeamsList.innerHTML = '<p class="loading-state">No past teams added yet.</p>';
+    return;
+  }
+
+  pastTeamsList.innerHTML = pastTeamsData
+    .map(
+      (team) => `
+        <article class="past-team-card">
+          <div class="past-team-head">
+            <div>
+              <p class="search-label">Team</p>
+              <h3>${escapeHtml(team.name)}</h3>
+            </div>
+            <div class="past-team-rate">
+              <p class="search-label">Win Rate</p>
+              <p>${escapeHtml(team.winRate)}</p>
+            </div>
+          </div>
+          <div class="past-team-body">
+            <p class="search-label">Players</p>
+            <ul class="past-team-players">
+              ${team.players
+                .map((player) => `<li>${escapeHtml(player)}</li>`)
+                .join("")}
+            </ul>
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+};
+
 const buildSearchText = (player) =>
   [
     player.name,
@@ -731,6 +822,8 @@ const loadPlayers = async () => {
 searchInput?.addEventListener("input", updateCards);
 sortSelect?.addEventListener("change", updateCards);
 detailCloseButton?.addEventListener("click", closeDetail);
+openPastTeamsButton?.addEventListener("click", openPastTeams);
+closePastTeamsButton?.addEventListener("click", closePastTeams);
 detailModal?.addEventListener("click", (event) => {
   const target = event.target;
 
@@ -739,10 +832,24 @@ detailModal?.addEventListener("click", (event) => {
   }
 });
 
+pastTeamsModal?.addEventListener("click", (event) => {
+  const target = event.target;
+
+  if (target instanceof HTMLElement && target.dataset.closePastTeams === "true") {
+    closePastTeams();
+  }
+});
+
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && pastTeamsModal && !pastTeamsModal.hidden) {
+    closePastTeams();
+    return;
+  }
+
   if (event.key === "Escape" && detailModal && !detailModal.hidden) {
     closeDetail();
   }
 });
 
+renderPastTeams();
 loadPlayers();

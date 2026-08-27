@@ -83,6 +83,17 @@ a {
   font-size: 0.95rem;
 }
 
+.site-nav-button {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.6);
+  color: inherit;
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
 .page-shell {
   padding: 1rem 0 3rem;
 }
@@ -573,6 +584,73 @@ a {
   margin: 0;
   color: var(--muted);
   min-height: 1.2em;
+}
+
+.blank-screen-modal[hidden] {
+  display: none;
+}
+
+.blank-screen-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+}
+
+.blank-screen-dialog {
+  position: relative;
+  width: min(920px, calc(100% - 1rem));
+  min-height: calc(100vh - 1rem);
+  margin: 0.5rem auto;
+  padding: 1rem;
+  overflow: auto;
+  border: 1px solid rgba(16, 34, 44, 0.08);
+  border-radius: 1.5rem;
+  background: linear-gradient(180deg, #fffaf3 0%, rgba(255, 255, 255, 0.98) 100%);
+  box-shadow: 0 30px 80px rgba(16, 34, 44, 0.24);
+}
+
+.blank-screen-body {
+  min-height: calc(100vh - 8rem);
+}
+
+.blank-screen-body h2 {
+  margin: 0;
+}
+
+.past-teams-list {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.past-team-card {
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.past-team-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.past-team-head h3,
+.past-team-rate p:last-child {
+  margin: 0.2rem 0 0;
+}
+
+.past-team-rate {
+  text-align: right;
+}
+
+.past-team-players {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+  color: var(--muted);
 }
 
 .detail-stat-grid {

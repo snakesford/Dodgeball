@@ -18,6 +18,7 @@
       <nav class="site-nav" aria-label="Primary">
         <a href="#featured-card">Featured Card</a>
         <a href="#stats">Quick Stats</a>
+        <button class="site-nav-button" id="open-past-teams" type="button">Past Teams</button>
       </nav>
     </header>
 
@@ -202,7 +203,26 @@
               <p class="search-label">History</p>
               <p id="detail-history"></p>
             </div>
+
           </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="blank-screen-modal" id="past-teams-modal" hidden>
+      <div class="detail-backdrop" data-close-past-teams="true"></div>
+      <section class="blank-screen-dialog" role="dialog" aria-modal="true" aria-labelledby="past-teams-title">
+        <div class="detail-header">
+          <div class="detail-badge-row">
+            <span class="tag">Past Teams</span>
+          </div>
+          <button class="detail-close" id="close-past-teams" type="button" aria-label="Close past teams">
+            Close
+          </button>
+        </div>
+        <div class="blank-screen-body">
+          <h2 id="past-teams-title">Past Teams</h2>
+          <div class="past-teams-list" id="past-teams-list"></div>
         </div>
       </section>
     </div>

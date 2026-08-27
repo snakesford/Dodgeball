@@ -137,7 +137,7 @@
       "overall": 79,
       "topPercent": 28,
       "speed": 30,
-      "note": "Bossy. Good at throwing, better at catches",
+      "note": "Bossy. Good at throwing, even better at catching.",
       "highlights": [
         "Great coordinator",
         "Reliable catcher"
@@ -237,9 +237,9 @@
       "overall": 94,
       "topPercent": 5,
       "speed": 30,
-      "note": "Crazy arm. Get's fursturated quick. Doens't give a rats ass for his bodies protection. Gives it most.",
+      "note": "Crazy arm. Gets frustrated quickly. Doesn't care at all about protecting his body. Gives it everything.",
       "highlights": [
-        "Crazy sinps on the ball",
+        "Crazy snipes with the ball",
         "Power",
         "Accuracy"
       ],
@@ -257,12 +257,12 @@
       "id": "Sarvesh Biradar",
       "name": "Sarvesh Biradar",
       "age": 30,
-      "role": "Well rounded",
+      "role": "Well-Rounded",
       "tier": "A",
       "overall": 94,
       "topPercent": 5,
       "speed": 30,
-      "note": "Good arm. Throws low and aims for feet. Great at cahting. Small dude.",
+      "note": "Good arm. Throws low and aims for feet. Great at catching. Small dude.",
       "highlights": [
         "Good spins, and throws at feet",
         "Clutch catches",
@@ -282,12 +282,12 @@
       "id": "Renzo",
       "name": "Renzo",
       "age": 32,
-      "role": "Well rounded",
+      "role": "Well-Rounded",
       "tier": "A",
       "overall": 94,
       "topPercent": 5,
       "speed": 30,
-      "note": "Good arm. Small person, hard to hit",
+      "note": "Good arm. Small player, hard to hit.",
       "highlights": [
         "Great blocking",
         "Survivability"
@@ -311,7 +311,7 @@
       "overall": 94,
       "topPercent": 5,
       "speed": 30,
-      "note": "Good arm. Small person, hard to hit",
+      "note": "Good arm. Small player, hard to hit.",
       "highlights": [
         "Great catching",
         "Survivability"
@@ -328,7 +328,7 @@
     },
     {
       "id": "James alston",
-      "name": "James alston",
+      "name": "James Alston",
       "tier": "A",
       "note": ""
     },
@@ -359,7 +359,7 @@
     },
     {
       "id": "KRIS WEINBENDER",
-      "name": "KRIS WEINBENDER",
+      "name": "Kris Weinbender",
       "tier": "B",
       "note": ""
     },
@@ -408,7 +408,7 @@
     },
     {
       "id": "Steven ennis",
-      "name": "Steven ennis",
+      "name": "Steven Ennis",
       "tier": "C",
       "note": ""
     },
@@ -487,7 +487,7 @@
     },
     {
       "id": "anthony",
-      "name": "anthony",
+      "name": "Anthony",
       "tier": "D",
       "note": ""
     },

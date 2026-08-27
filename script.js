@@ -295,15 +295,15 @@ const getRarityClass = (score) => {
 
 const getTierInfo = (score) => {
   if (score >= 90) {
-    return { code: "S", label: "Star Player", className: "tier-s" };
+    return { code: "S", label: "Star", className: "tier-s" };
   }
 
   if (score >= 82) {
-    return { code: "A", label: "Core Player", className: "tier-a" };
+    return { code: "A", label: "Key", className: "tier-a" };
   }
 
   if (score >= 72) {
-    return { code: "B", label: "Soldier Player", className: "tier-b" };
+    return { code: "B", label: "Solid", className: "tier-b" };
   }
 
   if (score >= 62) {
@@ -317,15 +317,15 @@ const getTierInfoFromCode = (tierCode) => {
   const normalizedCode = String(tierCode || "").trim().toUpperCase();
 
   if (normalizedCode === "S") {
-    return { code: "S", label: "Star Player", className: "tier-s" };
+    return { code: "S", label: "Star", className: "tier-s" };
   }
 
   if (normalizedCode === "A") {
-    return { code: "A", label: "Core Player", className: "tier-a" };
+    return { code: "A", label: "Key", className: "tier-a" };
   }
 
   if (normalizedCode === "B") {
-    return { code: "B", label: "Soldier Player", className: "tier-b" };
+    return { code: "B", label: "Solid", className: "tier-b" };
   }
 
   if (normalizedCode === "C") {
@@ -516,11 +516,6 @@ const buildSearchText = (player) =>
     .join(" ")
     .toLowerCase();
 
-const shouldShowCardSkills = (player) =>
-  Boolean(formatAgeRange(player.age)) &&
-  hasDisplayValue(player.role) &&
-  hasDisplayValue(player.note);
-
 const createCardMarkup = (player) => `
   <article
     class="player-card"
@@ -531,10 +526,10 @@ const createCardMarkup = (player) => `
   >
     <div class="card-topline">
       <span class="rating">Top ${escapeHtml(player.topPercent)}%</span>
-      <span class="rating">Score ${escapeHtml(player.score)}</span>
+      <span class="rating ${escapeHtml(player.tier.className)}">Tier ${escapeHtml(player.tier.code)} ${escapeHtml(player.tier.label)}</span>
     </div>
 
-    <div class="profile-wrap ${escapeHtml(player.rarityClass)}">
+    <div class="profile-wrap ${escapeHtml(player.tier.className)}">
       <img
         src="./stephen-profile.svg"
         alt="Illustrated profile portrait of ${escapeHtml(player.name)}"
@@ -562,74 +557,6 @@ const createCardMarkup = (player) => `
       }
       <p class="player-note">${escapeHtml(displayValue(player.note))}</p>
 
-      <div class="card-meta-row">
-        <p class="tier-label ${escapeHtml(player.tier.className)}">Tier ${escapeHtml(player.tier.code)} • ${escapeHtml(player.tier.label)}</p>
-      </div>
-
-      ${
-        shouldShowCardSkills(player)
-          ? `<div class="card-skill-bars" aria-label="Player skill breakdown">
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Power</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.power)}" style="width: ${escapeHtml(clampSkill(player.skills.power) * 10)}%"></span></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Stamina</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.stamina)}" style="width: ${escapeHtml(clampSkill(player.skills.stamina) * 10)}%"></span></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Agility</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.agility)}" style="width: ${escapeHtml(clampSkill(player.skills.agility) * 10)}%"></span></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Dodging</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.dodging)}" style="width: ${escapeHtml(clampSkill(player.skills.dodging) * 10)}%"></span></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Catching</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.catching)}" style="width: ${escapeHtml(clampSkill(player.skills.catching) * 10)}%"></span></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Awareness</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.awareness)}" style="width: ${escapeHtml(clampSkill(player.skills.awareness) * 10)}%"></span></div>
-        </div>
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Accuracy</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.accuracy)}" style="width: ${escapeHtml(clampSkill(player.skills.accuracy) * 10)}%"></span></div>
-        </div>
-        ${
-          Number.isFinite(Number(player.skills.creativityWithSwears))
-            ? `<div class="skill-row">
-          <div class="skill-head">
-            <span>Swears</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.skills.creativityWithSwears)}" style="width: ${escapeHtml(clampSkill(player.skills.creativityWithSwears) * 10)}%"></span></div>
-        </div>`
-            : ""
-        }
-        <div class="skill-row">
-          <div class="skill-head">
-            <span>Effort</span>
-          </div>
-          <div class="skill-track"><span class="skill-fill ${getSkillToneClass(player.effort, 0)}" style="width: ${escapeHtml(clampSkill(player.effort, 0) * 10)}%"></span></div>
-        </div>
-      </div>`
-          : ""
-      }
     </div>
   </article>
 `;
@@ -721,7 +648,7 @@ const sortPlayers = (list, mode) => {
 
 const updateCards = () => {
   const query = searchInput?.value.trim().toLowerCase() || "";
-  const mode = sortSelect?.value || "name-asc";
+  const mode = sortSelect?.value || "tier-asc";
 
   visiblePlayers = players.filter((player) => player.searchText.includes(query));
   visiblePlayers = sortPlayers(visiblePlayers, mode);

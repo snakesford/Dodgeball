@@ -312,32 +312,32 @@ a {
 
 .tier-s {
   color: #7a5400;
-  background: rgba(255, 215, 90, 0.22);
-  border-color: rgba(212, 167, 42, 0.45);
+  background: rgba(255, 215, 90, 0.28);
+  border-color: rgba(212, 167, 42, 0.55);
 }
 
 .tier-a {
   color: #5f2cd1;
-  background: rgba(160, 108, 255, 0.14);
-  border-color: rgba(111, 61, 244, 0.28);
+  background: rgba(160, 108, 255, 0.22);
+  border-color: rgba(111, 61, 244, 0.4);
 }
 
 .tier-b {
   color: #1558c7;
-  background: rgba(106, 161, 255, 0.14);
-  border-color: rgba(58, 111, 232, 0.28);
+  background: rgba(106, 161, 255, 0.22);
+  border-color: rgba(58, 111, 232, 0.4);
 }
 
 .tier-c {
   color: #1d7d42;
-  background: rgba(102, 199, 127, 0.16);
-  border-color: rgba(44, 154, 87, 0.28);
+  background: rgba(102, 199, 127, 0.22);
+  border-color: rgba(44, 154, 87, 0.4);
 }
 
 .tier-d {
-  color: #8b3d3d;
-  background: rgba(239, 90, 79, 0.14);
-  border-color: rgba(200, 58, 48, 0.28);
+  color: #5f6870;
+  background: rgba(158, 167, 174, 0.22);
+  border-color: rgba(95, 104, 112, 0.35);
 }
 
 .player-card.is-hidden {

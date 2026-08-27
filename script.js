@@ -943,6 +943,10 @@ const findPastTeamPlayer = (name, lookup) => {
 
   const tokens = normalizedName.split(" ").filter(Boolean);
 
+  if (tokens.length > 1) {
+    return null;
+  }
+
   for (const token of tokens) {
     const overrideToken = pastTeamAliasOverrides[token];
 
@@ -1123,7 +1127,7 @@ const renderPastTeams = () => {
                           })
                           .map(
                             ({ name, player }) =>
-                              `<li class="${player ? escapeHtml(player.tier.className) : ""}">${escapeHtml(name)}</li>`,
+                              `<li class="${player ? escapeHtml(player.tier.className) : "tier-d"}">${escapeHtml(name)}</li>`,
                           )
                           .join("")}
                       </ul>

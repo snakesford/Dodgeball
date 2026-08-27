@@ -289,6 +289,57 @@ a {
   max-width: 42ch;
 }
 
+.tier-label {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card-meta-row {
+  display: flex;
+  gap: 0.65rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.tier-s {
+  color: #7a5400;
+  background: rgba(255, 215, 90, 0.22);
+  border-color: rgba(212, 167, 42, 0.45);
+}
+
+.tier-a {
+  color: #5f2cd1;
+  background: rgba(160, 108, 255, 0.14);
+  border-color: rgba(111, 61, 244, 0.28);
+}
+
+.tier-b {
+  color: #1558c7;
+  background: rgba(106, 161, 255, 0.14);
+  border-color: rgba(58, 111, 232, 0.28);
+}
+
+.tier-c {
+  color: #1d7d42;
+  background: rgba(102, 199, 127, 0.16);
+  border-color: rgba(44, 154, 87, 0.28);
+}
+
+.tier-d {
+  color: #8b3d3d;
+  background: rgba(239, 90, 79, 0.14);
+  border-color: rgba(200, 58, 48, 0.28);
+}
+
 .player-card.is-hidden {
   display: none;
 }

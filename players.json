@@ -2,9 +2,10 @@
   "players": [
     {
       "id": "stephen-north-closer",
-      "name": "Stephen",
+      "name": "Stephen Mangold",
       "age": 34,
       "role": "Closing Specialist",
+      "tier": "S",
       "overall": 93,
       "topPercent": 7,
       "speed": 30,
@@ -30,6 +31,7 @@
       "name": "Rickey Serret",
       "age": 50,
       "role": "Power Striker",
+      "tier": "S",
       "overall": 92,
       "topPercent": 8,
       "speed": 30,
@@ -55,6 +57,7 @@
       "name": "Evan",
       "age": 17,
       "role": "Two-Way Catcher",
+      "tier": "S",
       "overall": 90,
       "topPercent": 13,
       "speed": 54,
@@ -80,6 +83,7 @@
       "age": 22,
       "trait": "ENERGY!!",
       "role": "Rotation Rookie",
+      "tier": "D",
       "overall": 61,
       "topPercent": 62,
       "speed": 30,
@@ -104,6 +108,7 @@
       "name": "Allyn Thomas",
       "age": 38,
       "role": "Field Captain",
+      "tier": "S",
       "overall": 79,
       "topPercent": 28,
       "speed": 30,
@@ -124,10 +129,35 @@
       }
     },
     {
+      "id": "MikaelKoiv",
+      "name": "Mikael Koiv",
+      "age": 43,
+      "role": "Field Captain",
+      "tier": "S",
+      "overall": 79,
+      "topPercent": 28,
+      "speed": 30,
+      "note": "Bossy. Wants to be incharge. Good at throwing, great at catches, even better at getting angry.",
+      "highlights": [
+        "Great coordinator",
+        "Reliable catcher"
+      ],
+      "skills": {
+        "power": 7,
+        "stamina": 7,
+        "agility": 5,
+        "dodging": 4,
+        "catching": 10,
+        "awareness": 8,
+        "accuracy": 8
+      }
+    },
+    {
       "id": "brandon-cook-two-way-anchor",
       "name": "Brandon Cook",
       "age": 31,
       "role": "Two-Way Anchor",
+      "tier": "S",
       "overall": 94,
       "topPercent": 5,
       "speed": 30,
@@ -146,6 +176,326 @@
         "awareness": 10,
         "accuracy": 8
       }
+    },
+    {
+      "id": "KyleWhiteaker",
+      "name": "Kyle Whiteaker",
+      "age": 36,
+      "role": "",
+      "tier": "S",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "Power-first anchor with elite awareness, strong hands, and disciplined survival under pressure.",
+      "highlights": [
+        "Low throws",
+        "Great court awareness",
+        "Good catching"
+      ],
+      "skills": {
+        "power": 8,
+        "stamina": 6,
+        "agility": 5,
+        "dodging": 7,
+        "catching": 9,
+        "awareness": 10,
+        "accuracy": 8
+      }
+    },
+    {
+      "id": "EmmettAustin",
+      "name": "Emmett Austin",
+      "age": 20,
+      "role": "Berserker",
+      "tier": "S",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "",
+      "highlights": [
+        "High power",
+        "Ok catching",
+        "Some team coordination",
+        "Stamina"
+      ],
+      "skills": {
+        "power": 8,
+        "stamina": 9,
+        "agility": 6,
+        "dodging": 7,
+        "catching": 5,
+        "awareness": 9,
+        "accuracy": 6
+      }
+    },
+    {
+      "id": "Greg",
+      "name": "Greg",
+      "age": 38,
+      "role": "Sniper",
+      "tier": "S",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "Crazy arm. Get's fursturated quick. Doens't give a rats ass for his bodys protection. Gives it most.",
+      "highlights": [
+        "Crazy sinps on the ball",
+        "Power",
+        "Accuracy"
+      ],
+      "skills": {
+        "power": 9,
+        "stamina": 6,
+        "agility": 7,
+        "dodging": 7,
+        "catching": 4,
+        "awareness": 6,
+        "accuracy": 8
+      }
+    },
+    {
+      "id": "Sarvesh Biradar",
+      "name": "Sarvesh Biradar",
+      "age": 30,
+      "role": "Well rounded",
+      "tier": "A",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "Good arm. Throws low and aims for feet. Great at cahting. Small dude.",
+      "highlights": [
+        "Good spins, and throws at feet",
+        "Clutch catches",
+        "Low accuracy"
+      ],
+      "skills": {
+        "power": 6,
+        "stamina": 7,
+        "agility": 5,
+        "dodging": 6,
+        "catching": 8,
+        "awareness": 7,
+        "accuracy": 6
+      }
+    },
+    {
+      "id": "Renzo",
+      "name": "Renzo",
+      "age": 32,
+      "role": "Well rounded",
+      "tier": "A",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "Good arm. Small person, hard to hit",
+      "highlights": [
+        "Great blocking",
+        "Survivability"
+      ],
+      "skills": {
+        "power": 7,
+        "stamina": 7,
+        "agility": 8,
+        "dodging": 8,
+        "catching": 4,
+        "awareness": 8,
+        "accuracy": 5
+      }
+    },
+    {
+      "id": "Brian DAmore",
+      "name": "Brian DAmore",
+      "age": 37,
+      "role": "Good catcher",
+      "tier": "A",
+      "overall": 94,
+      "topPercent": 5,
+      "speed": 30,
+      "note": "Good arm. Small person, hard to hit",
+      "highlights": [
+        "Great catching",
+        "Survivability"
+      ],
+      "skills": {
+        "power": 6,
+        "stamina": 5,
+        "agility": 5,
+        "dodging": 4,
+        "catching": 8,
+        "awareness": 7,
+        "accuracy": 5
+      }
+    },
+    {
+      "id": "James alston",
+      "name": "James alston",
+      "tier": "A",
+      "note": ""
+    },
+    {
+      "id": "Nathaniel Guard",
+      "name": "Nathaniel Guard",
+      "tier": "A",
+      "note": ""
+    },
+
+    {
+      "id": "Daniel Beranek",
+      "name": "Daniel Beranek",
+      "tier": "B",
+      "note": ""
+    },
+    {
+      "id": "Sam Downs",
+      "name": "Sam Downs",
+      "tier": "B",
+      "note": ""
+    },
+    {
+      "id": "Chance Morrison",
+      "name": "Chance Morrison",
+      "tier": "B",
+      "note": ""
+    },
+    {
+      "id": "KRIS WEINBENDER",
+      "name": "KRIS WEINBENDER",
+      "tier": "B",
+      "note": ""
+    },
+    {
+      "id": "Daniel Course",
+      "name": "Daniel Course",
+      "tier": "B",
+      "note": ""
+    },
+
+    {
+      "id": "Eric",
+      "name": "Eric",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Kytoosh Szumowski",
+      "name": "Kytoosh Szumowski",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Leonardo Reyna",
+      "name": "Leonardo Reyna",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Matt",
+      "name": "Matt",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Grace Rowan",
+      "name": "Grace Rowan",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Julia Thomas",
+      "name": "Julia Thomas",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Steven ennis",
+      "name": "Steven ennis",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "James Wright",
+      "name": "James Wright",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Kristin Nelson",
+      "name": "Kristin Nelson",
+      "tier": "C",
+      "note": ""
+    },
+    {
+      "id": "Lawrence",
+      "name": "Lawrence",
+      "tier": "C",
+      "note": ""
+    },
+
+    {
+      "id": "Theo Belesiotis",
+      "name": "Theo Belesiotis",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Tim Frew",
+      "name": "Tim Frew",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Ann Adams",
+      "name": "Ann Adams",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Ben Villarreal",
+      "name": "Ben Villarreal",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Soham Nandi",
+      "name": "Soham Nandi",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Franny Hawk",
+      "name": "Franny Hawk",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Justin P Vignac",
+      "name": "Justin P Vignac",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Arielle DeAngelo",
+      "name": "Arielle DeAngelo",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Marisol Shankar",
+      "name": "Marisol Shankar",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "anthony",
+      "name": "anthony",
+      "tier": "D",
+      "note": ""
+    },
+    {
+      "id": "Vaibhav Murthy",
+      "name": "Vaibhav Murthy",
+      "tier": "D",
+      "note": ""
     }
   ]
 }

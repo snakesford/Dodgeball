@@ -41,6 +41,8 @@
               <select id="sort-cards" class="sort-select" name="sort-cards">
                 <option value="name-asc">Name A-Z</option>
                 <option value="name-desc">Name Z-A</option>
+                <option value="tier-asc">Tier: S to D</option>
+                <option value="tier-desc">Tier: D to S</option>
                 <option value="overall-desc">Overall: High to Low</option>
                 <option value="overall-asc">Overall: Low to High</option>
                 <option value="age-asc">Age: Youngest</option>
@@ -148,6 +150,13 @@
                 </div>
                 <div class="skill-track"><span class="skill-fill" id="skill-extra-bar"></span></div>
               </div>
+              <div class="skill-row">
+                <div class="skill-head">
+                  <span>Effort</span>
+                  <span id="skill-effort-value">0/10</span>
+                </div>
+                <div class="skill-track"><span class="skill-fill" id="skill-effort-bar"></span></div>
+              </div>
             </div>
           </div>
 
@@ -163,6 +172,10 @@
             </div>
 
             <dl class="detail-stat-grid">
+              <div>
+                <dt>Tier</dt>
+                <dd id="detail-tier">S • Star Player</dd>
+              </div>
               <div id="detail-speed-row">
                 <dt>Throw Speed</dt>
                 <dd id="detail-speed">74 mph</dd>
